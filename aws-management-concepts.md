@@ -63,7 +63,8 @@ Aimed at when a person is working on a project that is going to become a large a
 - Cost: There are two options when it comes to developer support. You will pay the greater of the following 2 options
 	-  $29 per month 
 	-  3% of the bill
-	.If the 3% of your bill is $50, then you would pay $50 and not $29. If the 3% of your bill is $10, then you would pay $29. 
+	
+	If the 3% of your bill is $50, then you would pay $50 and not $29. If the 3% of your bill is $10, then you would pay $29. 
 	
 ### Business Support 
 
@@ -138,7 +139,7 @@ CLOUD IS NOT AN IT OPERATION, IT IS A BUSINESS STRATEGY
   
   The IT team can organize a tag requirements workshop so contributors can work together to identify the required tags
   
-  Areas when tagging can be implemented:
+  Areas where tagging can be implemented:
   
   - AWS Console: In the console, we can do grouping in the resource manager which can be used to show everything owned by group 'abcd' or show everything which can handle 'abcd'
   - Cost allocation: As we get deeper in the cost, the financial operations team should be able to create a detailed report. Instead of the team saying that 'this group is using this much', they should be able to say 'this group is using this much for this project in this region'. Tagging will be helpful for this
@@ -176,7 +177,7 @@ Capital expense - Pay an upfront cost for all resources at one time
 
 CLOUD COSTS NEED MANAGEMENT 
 
-A financial operations would help in managing cloud costs
+A financial operations team would help in managing cloud costs
 
 ### Billing Dashboard
 
@@ -200,7 +201,7 @@ In the cost explorer, we can dive deep into the costs and trends. It shows the %
 
 THIS IS VERY IMPORTANT FOR A PROPOSAL. 
 
-We have to first search and select the service we wish to use. A brief description, region to run the server in, pricing model, etc.
+We have to first search and select the service we wish to use and then provide a brief description, region to run the server in, pricing model, etc.
 
 If we have to specify information such as 'Processed bytes' or 'Average number of connections', we can ask the IT team for this information
 
@@ -230,7 +231,7 @@ It can be found by search for trusted advisor in AWS services
 * Terminating underutilized EBS instances
 * In S3 Buckets, you can use intelligent tiering which will make it easy to get into the bucket. We can change it to in-frequent access tiering. It will cost more to get to it but costs less to store. In an average business, only 20% of data in a bucket is regularly used.
 
-### Quiz
+  ### Quiz
   
  1. What is one of the three top ways to lower an AWS bill?
 
@@ -264,7 +265,7 @@ It is a list of questions which ask if 'abcd' is the best architecture
 * Security: Describes how to use services in AWS to protect systems, data and assets and improve the security of our architecture. Asks if we are following best security practices. How do you detect and investigate security events? How do you classify your data?What criteria makes data important?
 * Reliability: Focuses on building an architecture that has strong foundations, is resilient, can recover from failures and is maintained with best practices. Asks how we can build a reliable architecture. If something breaks, we have a way to quickly bring more architecture to support it. How do you monitor workload resources? How do you use fault isolation to protect the workload?
 * Performance Efficiency: Focuses on efficient use of services in the architecture to meet customer demands and business requirmenets. Asks how do you evolve the workload to take advantage of new releases. 
-* Cost Optimization: Focuses understand and controlling where money is being spent and avoiding unnecessary costs. How do you use pricing models to reduce costs? How do you monitor costs and usage?
+* Cost Optimization: Helps in understanding and controlling where money is being spent and avoiding unnecessary costs. How do you use pricing models to reduce costs? How do you monitor costs and usage?
 
 ### Well-Architected Tool
 
@@ -399,7 +400,7 @@ We have a company which is growing. The company has many departments which is cr
 
 To handle this growth, we will use AWS organizations which will let us centrally manage all the accounts. You can create and apply policies and it will apply it across the entire infrastructure. It gives central security and we can audit all the organizations from one place
 
-We can create and policy such as the IT Team cannot use the billing environment, then the policy would flow down to all the organizations
+We can create a policy such as the IT Team cannot use the billing environment, then the policy would flow down to all the organizations
 
 Thus, from once organization, we can manage all the other organizations 
 
