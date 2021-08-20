@@ -147,7 +147,7 @@ It is used to isolate the work
 
 ### Policy Evaluation 
 
-<img src="https://docs.aws.amazon.com/sns/latest/dg/images/AccessPolicyLanguage_Evaluation_Flow.gif" />
+<a href="#"><img src="sec-order-ops.gif" /></a>
 
 
 1. The decision to let a user access a resource starts with a default explicit 'deny'
