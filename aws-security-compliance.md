@@ -11,9 +11,9 @@
 
 1. Describe and understand the purpose for 
 	- Identity and Access management(IAM)
-		* Reality of security in the cloud
-		* Entities in IAM(users, groups, roles, etc)
-		* Policy, policy evaluations and the AWS Policy Generator
+		- Reality of security in the cloud
+		- Entities in IAM(users, groups, roles, etc)
+		- Policy, policy evaluations and the AWS Policy Generator
 2. Trusted Advisor
 3. Inspector 
 4. Audit Manager 
@@ -80,7 +80,7 @@ Best practice: Put users into a group and set permissions for that group
 3. Click on the blue button which says 'Add user'
 4. Provide a username and give it 'AWS Management Console access'. 'Programmatic Access' can be enabled if we wish to run scripts in the console and use the CLI
 5. Now select custom password and enter a strong password. Deselect 'Require password reset'. Click on next
-6. Give the required permissions. Here, we can give this user the 'AdministrativeAccess' permission. This will give us access to all services and resources. We can also create a group such as 'admin' and add the user to that group. Click next
+6. Give the required permissions. Here, we can give this user the 'AdministrativeAccess' permission. This will give us access to all services and resources. We can also create a group such as 'adminGroup' and add the user to that group. Click next
 7. Specify a tag and click on next 
 8. Click on 'Create User' at the bottom left 
 9. Now, a custom URL will be displayed. 
@@ -133,7 +133,7 @@ It is used to isolate the work
 8. Click on 'Create role'
 9.  On the left hand side, open 'Users' below 'Access Management' in a new tab
 10.  Click on user 'b' and then copy the value of the 'User ARN'
-11.  Go back to the roles tab and click on Trust relationships and then 'Edit trust relationship'
+11.  Go back to the first tab where the role for S3 is and click on Trust relationships and then 'Edit trust relationship'
 12.  In that file specify the value as follows and click on update trust policy
 
 ```json
@@ -153,9 +153,9 @@ It is used to isolate the work
 1. The decision to let a user access a resource starts with a default explicit 'deny'
 2. Then the policies of the request are evaluated. It checks the resources, principal, action and conditions. The order does not matter
 3. If AWS finds a deny instruction which would apply to the request, it will not allow the user to access that resource
-4. If no explicit deny is find, AWS checks for allow instructions in the request
+4. If no explicit deny is found, AWS checks for allow instructions in the request
 5. If even 1 is found, the user is allowed to proceed 
-6. If no allow is found, then the user will be denied access
+6. If no allow instruction is found, then the user will be denied access
 
 If a user has the right permissions to access a course, the order of operations is 
 Explicitly Deny -> Explicitly Allow
@@ -174,7 +174,7 @@ In actions, specify the permission
 
 In the resource name we can specify '*' which means everything 
 
-We can also specify a condition such as the request to do so should come from a specific IP
+We can also specify a condition, such as the request to access that resource should come from a specific IP
 
 Click on generate policy
 
@@ -224,11 +224,11 @@ With regards to security, Trusted Advisor checks for CloudTrail logging, comprom
 
 The checks are based on the level of AWS support. Business support will have more checks than basic support
 
-Several free checks are available 
+Seven free checks are available 
 
 Instead of telling everyone that you have found a security bug by running trusted advisor, we should first check the resources and why trusted advisor is flagging that. We should first check if they are intended to be that way
 
-Lets say trusted advisor lets us know that we have a few S3 Buckets which grant global access. However, they are supposed to be like that if they are holding assets for a website
+Lets say trusted advisor lets us know that we have a few S3 Buckets which grant global access. However, they might be supposed to be like that if they are holding assets for a website
 
 Trusted Advisor is based on best practices and not just our infrastructure 
 
@@ -248,9 +248,9 @@ To use it, we have to create an EC2, tag the instance so that inspector can iden
 
 To use it we will search for 'inspector' in the services 
 
-Network assessment - Checks network configuration and checks port which are reachable from outside the VPC. Does not require an agent. If we had 100 instances and we would run it weekly for a month, the cost would be $61 per month
+Network assessment - Checks network configuration and checks port which are reachable from outside the VPC. Does not require an agent. If we had 100 instances and we would run inspector weekly for a month, the cost would be $61 per month
 
-Host assessment - Checks for vulnerable software and ways to improve the security. Requires an agent. If we had 100 instances and we would run it weekly for a month, the cost would be $120 per month
+Host assessment - Checks for vulnerable software and ways to improve the security. Requires an agent. If we had 100 instances and we would run inspector weekly for a month, the cost would be $120 per month
 
 We can go to advanced settings and further configure the inspector 
 
@@ -266,7 +266,7 @@ Duration - How long it should run for
 
 Continuous checking and analysis for compliance, regulatory and industry standards and custom controls 
 
-It comes with several framework with controls which are mapped to industry standards and regulations
+It comes with several frameworks with controls which are mapped to industry standards and regulations
 
 ### Artifact 
 
@@ -379,7 +379,7 @@ Uses machine learning, anomaly detection and integrated threat intelligence
 
 Integrates into services to create alerts
 
-It could be a malicious attack OR an employee logging in from a place where they should not be logging in from such as a coffee shop without a VPN and accessing an important resource
+If GuardDuty detects suspicious activity, it could be a malicious attack OR an employee logging in from a place where they should not be logging in from such as a coffee shop without a VPN and accessing an important resource
 
 ### Macie 
 
@@ -395,7 +395,7 @@ Macie offers a 30 day free trial
 
 Can analyze 1GB of data per month, for free
 
-After the free analysis 1GB of data, 1GB can be analyzed for $1 per month and 1 S3 Bucket would cost $0.10 per month
+After the free analysis of 1GB of data, 1GB can be analyzed for $1 per month and 1 S3 Bucket would cost $0.10 per month
 
 ### Quiz
 
