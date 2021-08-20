@@ -39,7 +39,7 @@
 
 Businesses in the cloud follow this process for building an app- code > build > test > deploy > secure
 
-However, we have to make security the first and top priority- secure > code > build > > test > deploy  
+However, we have to make security the first and top priority- secure > code > build > test > deploy 
 
 We also have to incorporate security in all aspects, writing secure code, securely building it, etc
 
@@ -80,7 +80,7 @@ Best practice: Put users into a group and set permissions for that group
 3. Click on the blue button which says 'Add user'
 4. Provide a username and give it 'AWS Management Console access'. 'Programmatic Access' can be enabled if we wish to run scripts in the console and use the CLI
 5. Now select custom password and enter a strong password. Deselect 'Require password reset'. Click on next
-6. Give the required permissions. Here, we can give this user the 'AdministrativeAccess' permission. This will give us access to all services and resources. We can also create a group such as 'admin' and add the user to that group
+6. Give the required permissions. Here, we can give this user the 'AdministrativeAccess' permission. This will give us access to all services and resources. We can also create a group such as 'admin' and add the user to that group. Click next
 7. Specify a tag and click on next 
 8. Click on 'Create User' at the bottom left 
 9. Now, a custom URL will be displayed. 
