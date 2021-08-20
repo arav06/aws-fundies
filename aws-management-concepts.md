@@ -52,7 +52,7 @@ Aimed at when you are learning about AWS and experimenting and gaining knowledge
  
  - 24/7 access to customer service - Email/Text support. Not gonna get a fast result. Used when asking questions which do not require an immediate results. The support provides documentations, whitepapers and a support forum. 
  - AWS Trusted Advisor - Provide recommendations that help you follow best practices in AWS. Checks for ways to improve your infrastructure, security, performance, reduce costs and monitor service quotas. 7 checks only.
- - AWS Personal Health Dashboard - Shows you what is going on their infrastructure at the moment. 
+ - AWS Personal Health Dashboard: Shows you what is going on their infrastructure at the moment. 
  - BASIC SUPPORT IS FREE
 
 ### Developer Support
@@ -63,7 +63,7 @@ Aimed at when a person is working on a project that is going to become a large a
 - Cost: There are two options when it comes to developer support. You will pay the greater of the following 2 options
 	-  $29 per month 
 	-  3% of the bill
-	If the 3% of your bill is $50, then you would pay $50 and not $29. If the 3% of your bill is $10, then you would pay $29. 
+	.If the 3% of your bill is $50, then you would pay $50 and not $29. If the 3% of your bill is $10, then you would pay $29. 
 	
 ### Business Support 
 
@@ -76,7 +76,8 @@ Aimed at a business which is ready to put a large project into AWS
 	-  $100 per month 
 	-  10% of the bill, if the bill is less than $10K
 	-  10% of $10K + 7% of the bill which is greater than $10K and less than $80K
-	 Lower percentage for higher spend
+	
+	Lower percentage for higher spend
 		
 ### Enterprise Support
 
@@ -88,6 +89,7 @@ Aimed at large projects whose profit can be measured in seconds
 	-  $15,000 per month 
 	-  10% of the bill, if the bill is less than $150K
 	-  10% of $150K + 7% of the bill which is greater than $150K and less than $500K
+
 	Lower percentage for higher spend
 
 ### Summary
@@ -169,6 +171,7 @@ Automation,Operations support,Cost allocation,Access Control
   * Top 3 ways to lower an AWS bill
 
 Variable expense - Pay for resources as and when you use them
+
 Capital expense - Pay an upfront cost for all resources at one time
 
 CLOUD COSTS NEED MANAGEMENT 
