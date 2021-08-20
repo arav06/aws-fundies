@@ -37,9 +37,9 @@
 
 ### Reality of security 
 
-Businesses in the cloud follow this process for building an app- code > build > test > deploy > secure
+Businesses in the cloud follow this process for building an app- code --> build --> test --> deploy --> secure
 
-However, we have to make security the first and top priority- secure > code > build > test > deploy 
+However, we have to make security the first and top priority- secure --> code --> build --> test --> deploy 
 
 We also have to incorporate security in all aspects, writing secure code, securely building it, etc
 
