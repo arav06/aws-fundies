@@ -44,7 +44,7 @@ Course Link: https://my.ine.com/Cloud/courses/7160c9f4/aws-services-fundamentals
 
 #### Support Options 
 
-![[support-plans.png]]
+<img src="support-plans.png" />
 
 #### Understanding the root account 
 
