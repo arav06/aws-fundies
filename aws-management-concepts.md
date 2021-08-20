@@ -99,7 +99,7 @@ Aimed at large projects whose profit can be measured in seconds
 3. Business: Running a workload which will generate a profit
 4. Enterprise: Run a workload which has to be running and is essential for a business
 
-<a href="#"><img src="support-plans.png"></a>
+![support-plans](support-plans.png)
 
 ### Quiz
 
@@ -230,7 +230,7 @@ It can be found by search for trusted advisor in AWS services
 * Terminating underutilized EBS instances
 * In S3 Buckets, you can use intelligent tiering which will make it easy to get into the bucket. We can change it to in-frequent access tiering. It will cost more to get to it but costs less to store. In an average business, only 20% of data in a bucket is regularly used.
 
-  ### Quiz
+### Quiz
   
  1. What is one of the three top ways to lower an AWS bill?
 
