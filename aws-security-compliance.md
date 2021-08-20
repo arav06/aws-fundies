@@ -138,7 +138,7 @@ It is used to isolate the work
 
 ```json
 "Principal"{
-"Service":"s3.amazonaws.com"
+"Service":"s3.amazonaws.com",
 "AWS":"ARN VALUE"
 }
 ```
@@ -147,7 +147,7 @@ It is used to isolate the work
 
 ### Policy Evaluation 
 
-<a href="#"><img src="sec-order-ops.gif" /></a>
+![sec-order-ops](sec-order-ops.gif)
 
 
 1. The decision to let a user access a resource starts with a default explicit 'deny'
