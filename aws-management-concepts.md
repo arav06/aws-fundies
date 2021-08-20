@@ -94,7 +94,7 @@ Aimed at large projects whose profit can be measured in seconds
 
 ### Summary
 
-1. Basic: Free
+1. Basic: Free and great if you're just starting out
 2. Developer: Experimenting with workloads. Little better response time and more access to the systems
 3. Business: Running a workload which will generate a profit
 4. Enterprise: Run a workload which has to be running and is essential for a business
