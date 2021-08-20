@@ -11,9 +11,9 @@
 
 1. Describe and understand the purpose for 
 	- Identity and Access management(IAM)
-		- Reality of security in the cloud
-		- Entities in IAM(users, groups, roles, etc)
-		- Policy, policy evaluations and the AWS Policy Generator
+		* Reality of security in the cloud
+		* Entities in IAM(users, groups, roles, etc)
+		* Policy, policy evaluations and the AWS Policy Generator
 2. Trusted Advisor
 3. Inspector 
 4. Audit Manager 
