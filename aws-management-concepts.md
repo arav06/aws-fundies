@@ -99,7 +99,7 @@ Aimed at large projects whose profit can be measured in seconds
 3. Business: Running a workload which will generate a profit
 4. Enterprise: Run a workload which has to be running and is essential for a business
 
-<img src="support-plans.png" />
+<a href="#"><img src="support-plans.png"></a>
 
 ### Quiz
 
