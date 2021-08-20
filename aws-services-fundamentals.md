@@ -44,15 +44,13 @@ Course Link: https://my.ine.com/Cloud/courses/7160c9f4/aws-services-fundamentals
 
 #### Support Options 
 
-<img src="support-plans.png" />
+![[support-plans.png]]
 
 #### Understanding the root account 
 
 If we are logging in with an email, we are logging into the root user
 
-NOT an everyday login 
-We should not always be logging into the root 
-Root account has unlimited capabilities 
+NOT an everyday login. We should not always be logging into the root. Root account has unlimited capabilities 
 
 Setup MFA for root account 
 
@@ -108,9 +106,7 @@ We should not start a service and leave it running. This will cause the bill to 
 
 Billing alarms watch our account and if we reach a certain spending limit, it will alert us 
 
-An alarm can be created using CloudWatch 
-The alarm which we will create is a part of the Simple Notification System(SNS)
-It is basically sending a value on which we can keep an eye on to CloudWatch to monitor the value
+An alarm can be created using CloudWatch. The alarm which we will create is a part of the Simple Notification System(SNS). It is basically sending a value on which we can keep an eye on to CloudWatch to monitor the value
 
 SNS will take the email we supply and send an email to us. An email will immediately be sent asking if we wish to use CloudWatch to send us alerts. If we click on confirm, then we will start receiving email for alarms. If we do not click on confirm, then CloudWatch will not send emails. Check the Spam folder for the confirmation email
 
