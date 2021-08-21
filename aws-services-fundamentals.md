@@ -229,9 +229,9 @@ S3 as a service is global but the buckets can be setup in different regions
 
 #### Selecting an AWS Region
 
-1. Data Regulations: Are there regulatory considerations for the data which will be processed? 
+1. Data Regulations:We have to check if there are regulatory considerations for the data which will be processed
 2. AWS Services: Are the required AWS services available in that region? AWS DOES NOT PUSH OUT NEW SERVICES TO REGIONS SIMULTANEOUSLY. It tends to roll out services from 1 region to the next and normally starts from Virginia 
-3. Geographic Location: Is the region geographically near your intended end users. We should not select the region as Australia if we want our end users to be people from USA/South America/Europe
+3. Geographic Location: Is the region geographically near your intended end users? We should not select the region as Australia if we want our end users to be people from USA/South America/Europe
 4. Fault Tolerance: Do we need the highest levels of fault tolerance from the infrastructure? We may have to setup our app in more than 1 region, if 1 region does not support a requirement
 
 ### Amazon Virtual Private Cloud(VPC)
@@ -240,9 +240,9 @@ A private cloud for our organization within AWS
 
 A VPC consists of an Availability Zone which is running many services
 
-We should setup more than 1 AZ, so that if 1 goes down, the other one is still up and running 
+We should setup more than 1 AZ in our VPC, so that if 1 goes down, the other one is still up and running 
 
-For high levels of fault tolerance, we can setup our VPC in another region and setup the exact same infrastructure 
+For high levels of fault tolerance, we can setup our VPC in another region and setup the exact same infrastructure
 
 ### Amazon CloudFront 
 
@@ -254,7 +254,7 @@ To get low latency to the end users, we will use a content distribution network(
 * Speeds up delivery of websites and speeds up live and on-demand video streaming
 * Automatically routes traffic to the most performant AWS edge locations 
 
-We have an app in Ohio but our user is in Rio. The first time the user access the website, a request is sent to the CloudFront site in Rio. The request is then sent from the site at Rio to the site in Ohio. The site in Ohio then sends the contents of the website to the site in Rio. The site in Rio stores the website contents in it's cache and then forwards the contents to the user in Rio. At the same time, if another user also accesses the website, then a request is sent to the site in Rio which instantly forwards the website contents to the user. It does not request the site in Ohio for the website since it has stored contents in it's cache. This will offer much lower latency and quicker response time.
+We have an app in Ohio but our user is in Rio. The first time the user accesses the website, a request is sent to the CloudFront site in Rio. The request is then sent from the site at Rio to the site in Ohio. The site in Ohio then sends the contents of the website to the site in Rio. The site in Rio stores the website contents in it's cache and then forwards the contents to the user in Rio. At the same time, if another user also accesses the website, then a request is sent to the site in Rio which instantly forwards the website contents to the user. It does not request the site in Ohio for the website since it has stored the contents in it's cache. This will offer much lower latency and quicker response time.
 
 ### Quiz
 
@@ -269,3 +269,160 @@ Data centers go into availability zones, availability zones go into regions
 ```txt
 Regulatory restrictions concerning data processing
 ```
+
+
+## Amazon Elastic Cloud Compute (EC2)
+
+* What is Amazon EC2
+* Amazon Machine Image(AMI) 
+* Instance Types 
+* Storage 
+* Security Groups
+* Purchasing Options 
+* Dedicated Instances and Dedicated Hosts
+
+### What is Amazon EC2
+
+Virtualization is running an operating system within another operating system
+
+* Virtual servers in the cloud which can support workloads
+* Can scale in or out in minutes. 10 years ago, when we had to add more servers to our infrastructure, it would cost a lot of money. As user demand goes up, we can scale out and when user demand starts decreasing, we can scale in 
+* Has many operating systems and server sizes 
+* Flexible options to optimize cost
+
+An EC2 instance is made up of an amazon machine image and instance type
+
+Once an EC2 virtual machine is up and running, it is known as an EC2 instance
+
+### Amazon Machine Image(AMI)
+
+The software of our virtual server 
+
+Contains the operating system, applications and utilities. Example: We can buy an AMI which already has WordPress setup and run our website instantly 
+
+Offer launch permissions to configure security 
+
+AMIs have storage options to attach to the EC2 instance 
+
+AMI partners up with the instance type
+
+### Instance Types
+
+The virtual hardware of our virtual server
+
+AWS gives us categories for the type of hardware we need: general, compute, memory, accelerated, storage 
+
+Offers various amounts of virtual CPUs and memory 
+
+The way AWS offers the the purpose of the server and the various amounts of CPUs and memory is by 'Purpose.Size'
+
+Purpose - Category and generation of the server.
+Size - Lets you know how big/small the server is 
+
+Examples: M5.large(General, 2vCPUs, 8GiB Memory) and M5.xlarge(General,4vCPUs,16 GiB  Memory)
+
+As we go up by one size such as .large to .xlarge, the amounts of CPU and memory will increase 
+
+### Storage 
+
+#### Instance Storage
+
+VERY IMPORTANT: IT IS TEMPORARY. NOT A PLACE TO SET UP A DATABASE/STORE LONG TERM INFORMATION ABOUT CUSTOMERS 
+
+Physical disks which are attached to the hardware of the virtual machine 
+
+If the physical components fail or if the EC2 instance is stopped/hibernated/terminated, then you will lose the data in the storage 
+
+GREAT FOR TEMPORARY STORAGE 
+
+#### Elastic Block Storage(EBS)
+
+PERSISTENT STORAGE 
+
+2 flavors: SSDs and Spinning drives aka HDs(Have a good purpose in cloud architecture)
+
+EBS is a great place to store databases and other long term information 
+
+SSDs are great if you are constantly going to be writing to the disk
+
+If you are not sure about which storage, go for SSD
+
+Spinning drives are great for storing large files and if you want to store files which you do not access frequently 
+
+CONSIDER THE WORKLOAD BEFORE SELECTING STORAGE TYPE
+
+### Security Groups 
+
+FIREWALL WHICH WRAPS AROUND OUR EC2 INSTANCE 
+
+We can specify rules for inbound/outbound traffic 
+
+We can name our security groups
+
+In security groups, rules are stateful
+
+Lets say that we have a website running on port 443(HTTPS) and using our security group, we allow all inbound traffic to port 443. Now, we have a device connected to the internet which visits our website. Once it does so, it hits the security group which allows it to access port 443. During this negotiation, the device provides a high port number(port higher than 1024) such as 48923, to which the contents of the website should be sent back. Now, the security groups realizes that the traffic on port 443 is legitimate and the client wants the website contents on port 48923. So, the security groups automatically allows outbound traffic on port 48923
+
+The rules of a security group such as 'SG-1' can be applied to more than one EC2 instance. If we allow inbound traffic on port 22(SSH) for 'SG-1',  then all the instances will follow that rule and allow inbound connection on port 22
+
+### Purchasing Options 
+
+How we pay for EC2 
+
+#### On Demand 
+
+Pay as you go
+
+You are charged by the hour/second, depending on the OS. 
+
+Most open-source operating systems such as linux are charged by the second, for a minimum of 1 minute. Windows is charged by the hour
+
+There is no long term commitment, capacity planning  or purchasing required 
+
+#### Reserved Instances(RI)
+
+For a server which will be running for a long time such as 1 year or 3 years 
+
+Change the billing model to a complete/partial/none up front 
+
+There are two types: Standard and Convertible 
+
+In an RI, if we purchase a system, then IT HAS TO BE PERMANENT 
+
+Convertible RI will let us upgrade our instance from something such as M5 to M6
+
+RI IS A BILLING MODEL 
+
+AWS has finite hardware and with so many customers they may not have the hardware you require. If this system is for a mission critical workload, then you need a zonal RI which require us to pick an availability zone in our VPC. Once this is done, it becomes a capacity reservation which lets us start up the server which is defined in the RI
+
+|   	Topic		| Standard RI |  Convertible RI| 
+| ----------- | ----------- | ----------- | 
+| % off On-Demand| Up to 72%|Up to 54%  | 
+| Change attributes of the RI|No| Yes if the exchanged results in the RI are greater of equal | 
+| Capacity Reservation|Yes if an AZ is specified| Yes if an AZ is specified | 
+
+#### Spot 
+
+Allows us to not spend a tremendous amount of money by bidding on spare Amazon EC2 capacity 
+
+Up to 90$ off compared to On-Demand 
+
+We can only use stateless workload i.e. we can shutdown the workload and bring it back up and it will not affect the way the workload is running. The data for it is being stored in a database and the workload can make calls to the database to get the data 
+
+These servers can be reclaimed within a 2 minute warning 
+
+Lets say that we are bidding $5 for a server which costs $10. Gradually the price comes down to $5 and we own that server and we run our workload. As more and more people start using the AWS infrastructure, the price for the server starts coming back up and once it passes $5, we get a 2 minute warning and after 2 minutes our server will be taken away from us 
+
+### Dedicated Instances and Dedicated Hosts
+
+Situation where a workload that need a particular environment because ogf regulatory concerns such as 'You cannot run this app on a system that has other servers which can access the memory' 
+
+Dedicated instances and hosts let us say 'this physical system is my machine and no one else can access its resources' 
+
+Dedicated Instances - Instances which are running on a single server which are dedicated for one customer. But if one customer shuts down their instance, their hardware maybe changed but they will be the only one using that hardware. Helps in isolating workload 
+
+Shared tenancy - Different customers are sharing the same hardware but are separated by a barrier so that they cannot access each other's data
+
+Dedicated Hosts - Dedicated physical servers for a single customer which will not be changed
+
+In dedicated hosts, a customer is the first and only one on the server and there will be no interchanging of hardware. YOU WILL BE THE ONLY ONE ON THAT SERVER. Helps in ensuring workload isolation and that you will always be on the same physical server
