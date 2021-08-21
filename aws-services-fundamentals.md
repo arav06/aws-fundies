@@ -270,7 +270,6 @@ Data centers go into availability zones, availability zones go into regions
 Regulatory restrictions concerning data processing
 ```
 
-
 ## Amazon Elastic Cloud Compute (EC2)
 
 * What is Amazon EC2
@@ -294,6 +293,10 @@ An EC2 instance is made up of an amazon machine image and instance type
 
 Once an EC2 virtual machine is up and running, it is known as an EC2 instance
 
+To connect to an EC2 instance via SSH/RDP, we will have to generate a connection key
+
+By default, when connecting to a linux instance, we connect over SSH and when connecting to a windows instance, we connect over RDP
+
 ### Amazon Machine Image(AMI)
 
 The software of our virtual server 
@@ -305,6 +308,13 @@ Offer launch permissions to configure security
 AMIs have storage options to attach to the EC2 instance 
 
 AMI partners up with the instance type
+
+AMI which are free have 'Free tier eligible' mentioned below
+
+* 'Quick Start' consists of AMIs which can be spun up instantly without much configuration
+* 'My AMIs' has AMIs which we have spun up and taken a snapshot 
+* 'AWS Marketplace' is the place where vendors are selling their AMIs such as WordPress  
+* 'Community AMIs' are AMIs which are supported by the community
 
 ### Instance Types
 
@@ -323,11 +333,15 @@ Examples: M5.large(General, 2vCPUs, 8GiB Memory) and M5.xlarge(General,4vCPUs,16
 
 As we go up by one size such as .large to .xlarge, the amounts of CPU and memory will increase 
 
+Definitions for instance types can be found <a href="https://aws.amazon.com/ec2/instance-types/">here</a>
+
+.metal - Physical machine designated for us 
+
 ### Storage 
 
-#### Instance Storage
+#### Instance Store
 
-VERY IMPORTANT: IT IS TEMPORARY. NOT A PLACE TO SET UP A DATABASE/STORE LONG TERM INFORMATION ABOUT CUSTOMERS 
+VERY IMPORTANT: IT IS TEMPORARY. NOT A PLACE TO SET UP A DATABASE/STORE LONG TERM INFORMATION 
 
 Physical disks which are attached to the hardware of the virtual machine 
 
@@ -426,3 +440,43 @@ Shared tenancy - Different customers are sharing the same hardware but are separ
 Dedicated Hosts - Dedicated physical servers for a single customer which will not be changed
 
 In dedicated hosts, a customer is the first and only one on the server and there will be no interchanging of hardware. YOU WILL BE THE ONLY ONE ON THAT SERVER. Helps in ensuring workload isolation and that you will always be on the same physical server
+
+### Setting up and running an EC2 instance 
+
+* Amazon Linux AMI
+* t2.micro 
+* Add a 5GiB SSD drive 
+* Allow inbound traffic to port 443(HTTPS)
+* Tag the instance with CanBeDeleted
+* Generate a connection key 
+* Terminating the instance 
+
+1. In AWS instances, search for 'ec2' and click on 'EC2'
+2. Before you begin, select the appropriate region 
+3. Scroll down and click on 'Launch instance'
+4. Here, we can select  'Amazon Linux 2 AMI' which is free tier eligible 
+5. Now, for the instance type we will select 't2.micro' since it is free tier eligible and click on 'Next:Configure Instance Details'
+6. We can scale out/in by specifying the number of instances. If we want to request for spot billing, we check 'Request Spot instances'. We can enable the option to auto-assign a public IP. 'IAM role' can be be used to define the things which the server can do. We can create a role allowing the server to communicate with a Microsoft instance and then add the role. Click on 'Add storage'
+7. Here, we can add additional storage. We can also specify if we wish to encrypted the drive and delete the drive if we delete the instance. If we want the data in the drive to be persistent, do not enable 'Delete on Termination'. After that, click on 'Next: Add Tags'
+8. Here, we can add tags such as 'CanBeDeleted' or 'Owner'. Once you have specified the tags, click on 'Next: Configure Security Group'
+9. Now, we can configure the settings for inbound/outbound connections. Since this instance will be a web server, we can add a rule whose type is 'HTTPS', the protocol is 'TCP', the port is '443' and the source can be from anywhere
+10. Finally click on 'Review and Launch' and here we can check all the settings. If we want this to be a private instance and a message appears saying that the security group is available to the world, then we should check the settings in the security group
+11. Now you click on 'Launch'. Here you will be prompted for a key pair. The key pair is used to connect to the instance via SSH/RDP
+12. In this case, we can select 'Create a new key pair', provide it a name and then click on 'Download Key Pair'. Once it is download, click on 'Launch Instances'
+13. We can now go check our running instance by click on the instance id which should be something like 'i-37bvd2942', below the green text which says 'Your instances are now launching'
+14. Below 'Instance state' we can see if the instance is pending/running/stopped. If we click on the instance id and pull up the window at the bottom, we can see information about the instance 
+15. We will now terminate the instance. Stopping at instance means that it is shutdown and we can bring it back up later. Terminating an instance is obliterating everything. To terminate it, right click on the instance id and click on 'Terminate instance'
+
+### Quiz
+
+1. When purchasing a reserved EC2 instance, what are the two time period options?
+
+```txt
+1 year and 3 years
+```
+
+2. When configuring an Amazon EC2 instance, when is the key pair selected for programmatic access?
+
+```txt
+Immediately before launching the instance
+```
