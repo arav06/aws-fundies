@@ -195,7 +195,9 @@ Lets us build a fault tolerant and highly available service
 
 Best practice would be to use more than one AZ
 
-We can put our app into many AZs giving us high bandwidth and low latency such that it feels they are all in 1 data center. If 1 AZ is down, our app will be still be running as the other AZ is up
+We should put our app into many AZs giving us high bandwidth and low latency such that it feels they are all in 1 data center. If 1 AZ is down, our app will be still be running as the other AZ is up
+
+Examples: us-east-1a and us-east-1b. us-east-1 is a region and a,b and are the AZs
 
 #### Features of AZs
 
@@ -215,7 +217,7 @@ SELECT THE REGION WHICH IS CLOSEST TO OUR END USERS
 
 Allows developers to use the infrastructure that complies with data regulations from a certain part of the word and/or is closest to end user
 
-As of 2021, there are 25 regions(approx)
+As of 2021, there are 25 regions(approx). Examples: ap-south-1, us-east-1
 
 Our region is displayed in the top right corner, next to your username 
 
@@ -223,7 +225,7 @@ Upon clicking on it, we can see the other regions and their short forms
 
 If we see that something such as EC2 instance is missing, we should check if we are in the correct region 
 
-Some services can only be found in specific regions. There are some services such as IAM and S3 whose region is set to 'Global' which means that it can be accessed from all regions, be it Mumbai/Virginia/South Africa
+Some services can only be found in specific regions such as RDS. There are some services such as IAM and S3 whose region is set to 'Global' which means that it can be accessed from all regions, be it Mumbai/Virginia/South Africa
 
 S3 as a service is global but the buckets can be setup in different regions 
 
@@ -531,6 +533,8 @@ With a large file in EBS, we can change a part of a file without having to compl
 * Can be used to host static websites and other static resources such as pictures/videos
 
 S3 is used by game companies when they wish to roll out a new update as it is extremely easy to put the file in the bucket and then we can simply push the update via a URL 
+ 
+In S3, the place where objects are stored are known as buckets 
 
 #### Storage classes 
 
