@@ -78,7 +78,7 @@ Aimed at a business which is ready to put a large project into AWS
 	-  10% of the bill, if the bill is less than $10K
 	-  10% of $10K + 7% of the bill which is greater than $10K and less than $80K
 	
-	Lower percentage for higher spend
+	We will get a greater discount if we use more resources
 		
 ### Enterprise Support
 
@@ -91,7 +91,7 @@ Aimed at large projects whose profit can be measured in seconds
 	-  10% of the bill, if the bill is less than $150K
 	-  10% of $150K + 7% of the bill which is greater than $150K and less than $500K
 
-	Lower percentage for higher spend
+	We will get a greater discount if we use more resources
 
 ### Summary
 
