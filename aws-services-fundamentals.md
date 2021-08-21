@@ -181,7 +181,7 @@ In AWS, the data layer is the place in which users put our information into AWS
 - Multiple layers of PHYSICAL SECURITY
 - Making sure there is great backup power, HVAC and fire suppression
 - Making sure the data layer is restricted and includes threat detection devices
-- Location of the data center so that environmental issues can be avoided 
+- When selecting a location for a data center, the environmental issues of the location are taken into consideration
 
 Even if we are going to build a simple web app, we automatically inherit all of the above features, even though we may not need them 
 
@@ -377,7 +377,7 @@ In security groups, rules are stateful
 
 Lets say that we have a website running on port 443(HTTPS) and using our security group, we allow all inbound traffic to port 443. Now, we have a device connected to the internet which visits our website. Once it does so, it hits the security group which allows it to access port 443. During this negotiation, the device provides a high port number(port higher than 1024) such as 48923, to which the contents of the website should be sent back. Now, the security groups realizes that the traffic on port 443 is legitimate and the client wants the website contents on port 48923. So, the security groups automatically allows outbound traffic on port 48923
 
-The rules of a security group such as 'SG-1' can be applied to more than one EC2 instance. If we allow inbound traffic on port 22(SSH) for 'SG-1',  then all the instances will follow that rule and allow inbound connection on port 22
+The rules of a security group such as 'SG-1' can be applied to more than one EC2 instance. If we allow inbound traffic on port 22(SSH) for 'SG-1',  then all the instances whose security group is 'SG-1' will follow that rule and allow inbound connection on port 22
 
 ### Purchasing Options 
 
@@ -401,7 +401,7 @@ Change the billing model to a complete/partial/none up front
 
 There are two types: Standard and Convertible 
 
-In an RI, if we purchase a system, then IT HAS TO BE PERMANENT 
+In an RI, if we purchase a system, then IT WILL BE A PERMANENT ACTION
 
 Convertible RI will let us upgrade our instance from something such as M5 to M6
 
@@ -419,17 +419,17 @@ AWS has finite hardware and with so many customers they may not have the hardwar
 
 Allows us to not spend a tremendous amount of money by bidding on spare Amazon EC2 capacity 
 
-Up to 90$ off compared to On-Demand 
+Up to 90% off compared to On-Demand 
 
 We can only use stateless workload i.e. we can shutdown the workload and bring it back up and it will not affect the way the workload is running. The data for it is being stored in a database and the workload can make calls to the database to get the data 
 
 These servers can be reclaimed within a 2 minute warning 
 
-Lets say that we are bidding $5 for a server which costs $10. Gradually the price comes down to $5 and we own that server and we run our workload. As more and more people start using the AWS infrastructure, the price for the server starts coming back up and once it passes $5, we get a 2 minute warning and after 2 minutes our server will be taken away from us 
+Lets say that we are bidding $5 for a server which costs $10. Gradually the price comes down to $5 and now we own that server and we run our workload. As more and more people start using the AWS infrastructure, the price for the server starts coming back up and once it passes $5, we get a 2 minute warning and after 2 minutes our server will be taken away from us 
 
 ### Dedicated Instances and Dedicated Hosts
 
-Situation where a workload that need a particular environment because ogf regulatory concerns such as 'You cannot run this app on a system that has other servers which can access the memory' 
+We have a situation where our workload need an environment in which the app on the server does not want other servers in the system to access it's memory, due to regulatory concerns
 
 Dedicated instances and hosts let us say 'this physical system is my machine and no one else can access its resources' 
 
@@ -437,7 +437,7 @@ Dedicated Instances - Instances which are running on a single server which are d
 
 Shared tenancy - Different customers are sharing the same hardware but are separated by a barrier so that they cannot access each other's data
 
-Dedicated Hosts - Dedicated physical servers for a single customer which will not be changed
+Dedicated Hosts - Dedicated physical servers for a single customer whose hardware will not be changed
 
 In dedicated hosts, a customer is the first and only one on the server and there will be no interchanging of hardware. YOU WILL BE THE ONLY ONE ON THAT SERVER. Helps in ensuring workload isolation and that you will always be on the same physical server
 
@@ -456,8 +456,8 @@ In dedicated hosts, a customer is the first and only one on the server and there
 3. Scroll down and click on 'Launch instance'
 4. Here, we can select  'Amazon Linux 2 AMI' which is free tier eligible 
 5. Now, for the instance type we will select 't2.micro' since it is free tier eligible and click on 'Next:Configure Instance Details'
-6. We can scale out/in by specifying the number of instances. If we want to request for spot billing, we check 'Request Spot instances'. We can enable the option to auto-assign a public IP. 'IAM role' can be be used to define the things which the server can do. We can create a role allowing the server to communicate with a Microsoft instance and then add the role. Click on 'Add storage'
-7. Here, we can add additional storage. We can also specify if we wish to encrypted the drive and delete the drive if we delete the instance. If we want the data in the drive to be persistent, do not enable 'Delete on Termination'. After that, click on 'Next: Add Tags'
+6. We can scale out/in by specifying the number of instances. If we want to request for spot billing, we check 'Request Spot instances'. We can enable the option to auto-assign a public IP. 'IAM role' can be be used to define the things which the server can do. We can create a role allowing the server to communicate with a Microsoft instance and then add the role. For now we will not do it. Click on 'Add storage'
+7. Here, we can add additional storage. We can also specify if we wish to encrypted the drive and delete the drive if we delete the instance. If we want the data in the drive to be persistent, do not enable 'Delete on Termination'. 'Delete on Termination' means that if we terminate our instance, then the drive will also be deleted. If we do not check that, the drive will exist after we terminate the instance. Click on 'Next: Add Tags'
 8. Here, we can add tags such as 'CanBeDeleted' or 'Owner'. Once you have specified the tags, click on 'Next: Configure Security Group'
 9. Now, we can configure the settings for inbound/outbound connections. Since this instance will be a web server, we can add a rule whose type is 'HTTPS', the protocol is 'TCP', the port is '443' and the source can be from anywhere
 10. Finally click on 'Review and Launch' and here we can check all the settings. If we want this to be a private instance and a message appears saying that the security group is available to the world, then we should check the settings in the security group
