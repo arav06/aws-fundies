@@ -480,3 +480,87 @@ In dedicated hosts, a customer is the first and only one on the server and there
 ```txt
 Immediately before launching the instance
 ```
+
+## Storage in AWS
+
+The best options for storage are EBS and S3
+
+* Amazon Elastic Block Storage(EBS)
+* Amazon Simple Storage Service(S3)
+
+### Amazon Elastic Block Storage(EBS)
+
+The hard drives of EC2 instances
+
+Used to store blocks 
+
+Two flavors: SSDs and Spinning Drives(HDs)
+
+SSDs are great for general purpose and great for storing a database or a file system which is constantly being written to/read from 
+
+Spinning Drives are great for infrequent access and can be used to store files which are infrequently used 
+
+IOPS - Unit of measure representing input/output operations per second 
+
+Throughput - Measure of the amount of data transferred from/to a storage device per second 
+
+Two types of SSDs: General Purpose and Provisioned IOPS
+
+General Purpose - gp3 and gp2 - Difference is in the throughput, for gp3 it is 1000 MiB/s and for gp2 it is 250 MiB/s. These are great for general computing, when we are developing our app and testing it. Size can be from 1 GiB to 16 TiB and they offer 16000 Max IOPS/Volume 
+
+For databases and file systems which are constantly being read from/written to, Provisioned IOPS are used. There are 2 types Io2 and Io1. Size can be from 4 GiB to 16 TiB and the throughput is 1000 MiB/s and they offer 64000 IOPS/Volume
+
+Two types of HDs: Throughput Optimized and Cold
+
+To store big data/large files, we use spinning drives. The best type for this is 'Throughput Optimized' or st1. Size can be from 125 GiB to 16 TiB and the throughput is 500 MiB/s
+
+The other type is known as 'Cold' or sc1. Much less expensive but we should not writing to/reading from them frequently. Used to store data which is not accessed frequently. Size can be from 125 GiB to 16 TiB and the throughput is 250 MiB/s
+
+If a drive is not attached to an EC2 instance, it's status will be 'available' and if it is attached, the status will be 'in-use'
+
+### Amazon Simple Storage Service(S3)
+
+Used to store objects 
+
+With a large file in EBS, we can change a part of a file without having to completely rewrite it. IN S3 WE HAVE TO COMPLETELY REWRITE THE FILE 
+
+* Scalable object storage with virtually not limit 
+* Designed for 99.999% durability
+* Cost effective storage clases 
+* Provides storage for AWS resources and assets which will be read from the internet
+* Can be used to host static websites and other static resources such as pictures/videos
+
+S3 is used by game companies when they wish to roll out a new update as it is extremely easy to put the file in the bucket and then we can simply push the update via a URL 
+
+#### Storage classes 
+
+* S3 Standard: Low latency and high throughput. Default location where S3 buckets are setup
+* S3 Infrequent Access: Used to store objects which will not be frequently accessed. Cost for storage will decrease but the cost for accessing the objects will increase
+* S3 Intelligent-Tiering: We can create a rule in our S3 standard class such that if an object has not been accessed for more than a month, then automatically move it to S3 Infrequent Access but if someone does access, then move it back up to the standard level. Storage cost will increase but cost to access the object will decrease 
+* S3 Glacier: Used to store long term archives. We can store backups of objects and to retrieve objects from Glacier, it can take as long as 12 hours 
+
+### Creating and attaching an EBS volume
+
+* Attach the volume to an EC2 instance. Ensure that you have a running EC2 instance 
+
+1. In the console, we will search for 'ec2' since EBS is related to EC2
+2. In the left bar, scroll down and find 'Elastic Block Store'. Ensure that we are in the right region
+3. Click on 'Volumes' and then in the top left we will click on 'Create volume'
+4. In the volume type we can select if we wish to use gp2, gp3, io1, io2, st1 or sc1. gp2 is great for general computing so we will use that. Then provide a size
+5. We will then specify the availability zone and we can also encrypt the drive by checking 'Encrypt this volume'
+6. Now click on 'Create Volume' in the bottom right. We can then click on 'Close' and now we can see the drive we have created. 
+7. Select the drive and click on 'Actions' and click on 'Attach volume'. Here we get a dropdown which will provide the EC2 instances to which we can attach the drive. After a few minutes, it's status should change from 'available' to 'in-use'
+
+### Quiz
+
+1. Which storage service is considered to be scalable object storage?
+
+```txt
+Amazon S3
+```
+
+2. What is a feature of Amazon S3?
+
+```txt
+Host static websites and other static resources
+```
