@@ -568,3 +568,46 @@ Amazon S3
 ```txt
 Host static websites and other static resources
 ```
+
+## Amazon Virtual Private Cloud (VPC)
+
+Our private cloud within AWS 
+
+* VPC 
+* IP Addressing 
+* Availability Zones in the VPC
+* Connecting to outside resources from the VPC
+* Connecting to AWS Resources that are addressed with a URL 
+* Proper use of the default VPC 
+
+When creating a VPC, we set a base IP Address range
+
+VPCs define the base network 
+
+We can create AZs in our VPC to create subnets and deploying resources in the subnet and to create resilient architectures
+
+When building VPCs from scratch, VPCs are not allowed to connect to outside resources. To connect it to outside resources we can add gateways. These are the internet gateway and VPN gateway. Internet gateways let us connect to the internet. Internet gateways allow connections to URLs or IP addresses which are outside the VPC's range. We can define special routing rules and setup VPN gateways which can be used to connect our VPC network to another network such as an on prem one 
+
+Public subnets are the subnets which are connected to the internet
+
+Private subnets are the subnets which are not connected to the internet 
+
+When we connect to certain resources in AWS, we use URLs. Examples: S3 and Dynamo DB. By default, when a resource in our VPC connects to an S3 bucket, it is addressed by the URL. Connections to these URLs, by default, go through the internet connection. We have to setup AWS endpoints which can be used to avoid routing over the internet. Once we setup these endpoints, connections to these URLs will flow through the endpoints and not the internet gateway. 
+
+All AWS accounts have default VPCs in each AWS Region. Default VPCs are configured the same for all accounts and they do not use actual workloads. These default VPCs are great for beginners you are experimenting with AWS
+
+DO NOT PUT MISSION CRITICAL/BUSINESS RESOURCES IN THE DEFAULT VPC SINCE THE NETWORK OF THE DEFAULT VPC IS THE SAME FOR EVERYONE
+
+### Quiz
+
+1. What services allows resources in your Amazon VPC to connect to the internet?
+
+```txt
+Internet gateway
+```
+
+2. With default settings, when a resources in a VPC connect to Amazon S3, how is the bucket addressed?
+
+```txt
+By the buckets URL
+```
