@@ -55,6 +55,7 @@ NOT an everyday login. We should not always be logging into the root. Root accou
 Setup MFA for root account 
 
 We should not setup programmatic access keys for the root user 
+
 Programmatic access keys are pieces of security credentials which can be used to run scripts in our AWS Console. Scripts should not be run as root as we can break our environment 
 
 In most cases, only root has access to billing and cost 
