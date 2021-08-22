@@ -46,7 +46,7 @@ Aimed at when you are learning about AWS and experimenting and gaining knowledge
  
  - 24/7 access to customer service - Email/Text support. Not gonna get a fast result. Used when asking questions which do not require an immediate results. The support provides documentations, whitepapers and a support forum. 
  - AWS Trusted Advisor - Provide recommendations that help you follow best practices in AWS. Checks for ways to improve your infrastructure, security, performance, reduce costs and monitor service quotas. 7 checks only.
- - AWS Personal Health Dashboard: Shows you what is going on their infrastructure at the moment. 
+ - AWS Personal Health Dashboard: Shows you what is going on in your infrastructure at the moment. 
  - BASIC SUPPORT IS FREE
 
 ### Developer Support
