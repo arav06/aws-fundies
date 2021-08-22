@@ -79,7 +79,7 @@ Aimed at a business which is ready to put a large project into AWS
 Aimed at large projects whose profit can be measured in seconds
 
 - Response time: If the business is down, response time is less than 15 minutes
-- Designated Technical Account Manager who will help when their is a problem in your organization and they can give you ideas
+- Designated Technical Account Manager who will help when there is a problem in your organization and they can give you ideas
 - Cost: There are 3 options when it comes to enterprise support. You will pay the greatest of the following 3 options
 	-  $15,000 per month 
 	-  10% of the bill, if the bill is less than $150K
