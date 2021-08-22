@@ -685,3 +685,157 @@ EFS automatically scales up and down
 ```txt
 EFS will not work because it only supports Linux
 ```
+
+## Amazon Elastic Beanstalk(EB)
+
+* AWS Elastic Beanstalk
+* Capabilities of  Elastic Beanstalk
+* Deploying an app using code provided in Elastic Beanstalk
+
+ Elastic Beanstalk lets us deploy functionalities such as databases, loading balancing, scaling with little AWS knowledge
+ 
+ Automates deployment of apps 
+ 
+ We supply code and it takes care of the rest. We can write the code in python, ruby, php, java, go and even docker containers. Once we have our code, we specify the architecture to Elastic Beanstalk and it takes care of the rest. It can be used to run web servers IIS, Apache, Nginx
+ 
+ Using Elastic Beanstalk, we can create the following infrastructure: scaling and load balancing, monitoring, logging and tracing, health status and database instances 
+ 
+ A collection of resources created with EB is known as a stack
+ 
+ When we build using EB, we build an environment and if we do not want something, we can tear it down. The advantage is that we will not have resources for which we will be charged, even after it has been terminated. The disadvantage is that if we have a database which has important data and we delete the environment, then we lose all the data. We can backup the data or build the database separately and link to it with our code
+ 
+ Many security professionals do not allow the use of EB in their organization. They understand the idea of EB but are troubled with the fact that EB is building our infrastructure. To check if EB is alright to use for our organization, we should check the Services in Scope website. If we are going to be processing cards, we should check if EB is PCI compliant and if we are working with the Federal Government, we should if FedRAMP compliant
+ 
+ If the name of an EB environment has '(terminated)' at it's end, it means it is being deleted/has been deleted 
+ 
+ IN ELASTIC BEANSTALK, APPS RUN IN AN ENVIRONMENT 
+ 
+ It takes 10-15 minutes for an environment to be completely deleted 
+ 
+ EB support Apache, IIS, Node, Docker, etc
+ 
+  ### Deploying an app using code provided in Elastic Beanstalk
+ 
+ 1. In services, search for 'elastic beanstalk' and click on 'Elastic Beanstalk'
+ 2. First we will have to create a test app so that we can create an environment and click on 'Create a new app' and provide a name, tags and the platform to use
+ 3. Now we will have the place where we can create our environment. 
+ 4. Click on 'Create a new environment'. We can select 'Web server environment' to deploy a web server and then click on 'Next'
+ 5. Specify an environment name and the application name. We can also specify a domain and it will be appended by '.region.elasticbeans' where 'region' is the region we are in such as 'us-east-1' and 'ap-south-1'. We can also give a description
+ 6. Scroll down and provide the platform, branch and version. You can also upload our own code or let AWS create a sample app
+ 7.  In 'Configure more options', we can use a single instance, single spot instance, high availability(load balancer and scaling groups) and custom(set the presets). We can also select the instance type, security settings, notifications, network, tags for the resources, database. For now we will not mess around with the advanced settings
+ 8. Click on 'Create environment'. It will take some time for an environment to be created. After sometime, we can see the health status and the platform. The URL is also displayed
+ 9. If we scroll down, we can see the recent version
+ 10. If we visit the website, we can see the sample app
+ 11. To delete all the resources, we will click on 'Actions' , scroll down and click on 'Terminate environment'. We will have to specify the environment name and then click on 'Terminate'
+
+### Quiz
+
+1. You are helping with an AWS Elastic Beanstalk deployment that includes a database resources that was created in Elastic Beanstalk. What special consideration should be made before deleting the environment created by Elastic Beanstalk?
+
+```txt
+The database will be deleted when the environment is deleted. If there is any data in the database that needs to be preserved it must be backed up before deleting the environment.
+```
+
+2. You are helping with a new architecture for both Linux and Windows servers. The EC2 instances will need to share storage. It has been suggested that EFS should be used. Will this work and why or why not?
+
+```txt
+Node,Apache,Microsoft IIS,Docker
+```
+
+## AWS Lambda, Amazon Elastic Container Service (ECS) & AWS Fargate
+
+Other ways to execute code in AWS
+
+* AWS Lambda - Architecture and implementation 
+* Understanding containers 
+* AWS Elastic Container Service 
+* AWS Fargate
+
+### AWS Lambda 
+
+Used to run code without needing a server
+
+No administration is required 
+
+Can handle both frontend and backend code 
+
+Automatic scaling and fault tolerance 
+
+Supports many runtimes and languages 
+
+We have our code which is read to go and we upload it to lambda. Once we upload it to lambda it sits there and does nothing. It waits for a trigger to occur that tells it to run. Best way to trigger code would be by using an 'S3 Create Object'. We can have a 'Create Object' happen when we upload files to a bucket. The bucket can be configured to create a trigger such that if files are uploaded, call the lambda and let the lambda know the names of the files. You can also create another lambda function 
+
+Many lambda functions can be chained such that instead of having one code base, we can have the code broke up into many lambdas 
+
+In the free tier, we get 1 million free requests. When lambda run, it has an execution role which limits the permissions of the function 
+
+Lambda should be used during the following cases:
+
+Cold start - When first starting lamba. To prevent this, we can call the lamba function every 15 minutes to make sure that it is running 
+
+* App uses less than 10 GiB or memory
+* Lambda can only run for 15 minutes
+* Lambda's cold start takes a lot of time and it will reset after 15 minutes of inactivity 
+* Functions have to be well written and tightly defined 
+* We have to understand monitoring in AWS using services such as CloudTrail and CloudWatch. Monitoring is important when we have many lambdas
+* Stateless or can re-engineered as stateless
+
+If we want to use more than 10 GiB of memory and run the code for more than 15 minutes, we can use contains
+
+### Containers 
+
+Lets say that we run code for the first time and it works. When we run it on another machine and it does not work. We move it to production and it does not work and it also does not work on the customer's machine. In most cases, the problem is because the code was being run on different machines. The customer machine, production machine and development machine are different. This is known as inconsistent environments. To solve this we will use containers
+
+Isolated environments to run our code
+
+The most famous is Docker 
+
+Docker gives us a consistent runtime environment such that if I run a container on my machine, it will work the same on another machine 
+
+Docker works across platforms and it is highly efficient. Instead of running one service on an EC2 instance, we can have 10 containers running 10 different services making it more efficient 
+
+Docker works in private data centers and cloud environments 
+
+### AWS Elastic Container Service(ECS)
+
+Automates building EC2 instances that the containers run on 
+
+We have to specify the containers which we want to run and ECS deploys the containers on the servers 
+
+ECS clusters are groups of EC2 instances that are running containers 
+
+ECS can monitor EC2 instances for free capacity to run containers
+
+ Elastic Container Registry(ECR) is a repository from where we can pull 
+
+We have a container and we register it in the ECR and now ECS can pull the container from the ECR. ECS gets indicated what we expect to run and it can push out the number of containers which we indicate to the ECS cluster of servers that it has setup. ECS manages the above. We can put our containers in ECR, ECS pulls the containers and then pushes the containers on to the EC2 instances and runs the number of containers we want to 
+
+If we do not want to run our container on a server, we will use Fargate 
+
+### AWS Fargate
+
+Can be used to run containers without servers 
+
+Removes the need for provisioning and managing 
+
+We have to pay for the resources which are being used by our containers 
+
+We run task(pods) in an isolated environment, improving security and isolation 
+
+When using Fargate we have to take into consideration, the costs for the vCPU used, memory used and the supported services used
+
+Carefully monitor you bill when using Fargate by using billing alarms 
+
+### Quiz
+
+1. Which service would you use if you wanted to use containers without creating virtual servers?
+
+```txt
+Amazon Fargate
+```
+
+2. What is the timeout limit for AWS Lambda?
+
+```txt
+15 minutes
+```
