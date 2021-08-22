@@ -11,7 +11,7 @@ Course Link: https://my.ine.com/Cloud/courses/756bf216/aws-management-concepts
 1. AWS Support Plans
 2. Tagging best practices
 3. Billing
-4. Well Architected Framework
+4. Well Architected Framework(WAF)
 5. Logging
 6. Infrastructure as Code
 7. AWS Organizations
@@ -24,12 +24,6 @@ Course Link: https://my.ine.com/Cloud/courses/756bf216/aws-management-concepts
 4. Well Architected Framework- Tool and Lenses
 5. Infrastructure as Code with AWS CloudFormation
 6. AWS Organization
-
-## Short Terms
-
-1. EC2 - Elastic Compute Cloud
-2. EBS - Elastic Block Store 
-3. WAF - Well Architected Framework
 
 ## AWS Support Plans
 
