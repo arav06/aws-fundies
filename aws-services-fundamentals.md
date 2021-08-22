@@ -839,3 +839,90 @@ Amazon Fargate
 ```txt
 15 minutes
 ```
+
+## Amazon Simple Notification Service(SNS) & Amazon Simple Queue Service(SQS)
+
+### Amazon Simple Notification Service(SNS)
+
+Way of sending messages for app-app or app-person communications 
+
+Enables decoupling of apps. Normally 1 app(a) maybe talking to another(b). If something happens such that b can no longer communicate, then a does not know what to do. With SNS, a can send the message b and its on SNS to get it to b
+
+Managed service and is reliable and offers automatic scaling 
+
+We can send messages to millions of users
+
+When sending a message via SNS, the message is sent to a topic in SNS which sends it to the destination such as SQS, email or phone. The way destinations are defined are by using subscriptions. Subscriptions refer to the destination such as phone/email
+
+SNS IS A FIRE AND FORGOT MESSAGING SYSTEM. When SNS sends a message from the topic via the subscription to the email, it will simply send it and if there is an error on the other end, there is no check for that and the message is gone 
+
+SNS is used a lot by operations team 
+
+### Amazon Simple Queue Service(SQS)
+
+Allows us to retain and replay the message if there is a problem
+
+Gives us a managed queue service 
+
+Messages are stored until they are grabbed by the person/app to which we are sending the message 
+
+Enables decoupling of micro-service architecture 
+
+Sends, stores and moves messages between software components 
+
+Two flavors Standard(Messages go on and the message is grabbed) and FIFO(Ordered messaged, such as if we specify the order a-b-c, then the messages are sent in that order)
+
+### Quiz
+
+1. What are the two options for Amazon SQS queues?
+
+```txt
+Standard and FIFO
+```
+
+2. Amazon SNS was designed to send messages between which type of entities?
+
+```txt
+Application to application & application to person
+```
+
+## Amazon Kinesis
+
+* Overview of Kinesis 
+* Kinesis Data Streams
+* Kinesis Data Firehouse
+* Kinesis Data Analytics 
+* Kinesis Video Streams
+
+### Overview of Kinesis 
+
+We all have an app which is a realtime app which is grabbing data and bringing data back. Example: Find a friend app which shows a friend's location on a map
+
+Creating realtime processors on prem is expensive and hard
+
+Amazon Kinesis allows for the collection, processing and analysis of data in realtime 
+
+The data can be videos, audio, app logs, website clicks, IoT, etc
+
+Fully managed and scalable 
+
+Service specific offering for each Kinesis solution 
+
+* Data Streams: Involves large amounts of realtime data and is coming from many sources. Scalable, durable and realtime streaming of gigabytes of data per second coming from thousands of sources
+* Data Firehouse: Involves loading of realtime data and can transform data. Capture, load and transform data streams for near real-time analytics
+* Data Analytics: Execute SQL queries against real-time data 
+* Video Streams: Securely stream from video devices for analytics processing like machine learning 
+
+### Quiz
+
+1. What is the purpose of Amazon Kinesis Data Firehouse?
+
+```txt
+Capture, load, and transform data streams for near real-time analytics
+```
+
+2. Which of the following is not one of the Kinesis services?
+
+```txt
+Kinesis Information Flow
+```
