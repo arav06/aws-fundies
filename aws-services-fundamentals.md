@@ -333,7 +333,7 @@ Size - Lets you know how big/small the server is
 
 Examples: M5.large(General, 2vCPUs, 8GiB Memory) and M5.xlarge(General,4vCPUs,16 GiB  Memory)
 
-As we go up by one size such as .large to .xlarge, the amounts of CPU and memory will increase 
+As we go up by one size such as .large to .xlarge, the amounts of CPU and memory will double
 
 Definitions for instance types can be found <a href="https://aws.amazon.com/ec2/instance-types/">here</a>
 
@@ -540,7 +540,7 @@ In S3, the place where objects are stored are known as buckets
 
 * S3 Standard: Low latency and high throughput. Default location where S3 buckets are setup
 * S3 Infrequent Access: Used to store objects which will not be frequently accessed. Cost for storage will decrease but the cost for accessing the objects will increase
-* S3 Intelligent-Tiering: We can create a rule in our S3 standard class such that if an object has not been accessed for more than a month, then automatically move it to S3 Infrequent Access but if someone does access, then move it back up to the standard level. Storage cost will increase but cost to access the object will decrease 
+* S3 Intelligent-Tiering: We can create a rule in our S3 standard class such that if an object has not been accessed for more than a month, then automatically move it to S3 Infrequent Access but if someone does access it, then move it back up to the standard level. Storage cost will increase but cost to access the object will decrease 
 * S3 Glacier: Used to store long term archives. We can store backups of objects and to retrieve objects from Glacier, it can take as long as 12 hours 
 
 ### Creating and attaching an EBS volume
@@ -590,7 +590,7 @@ When building VPCs from scratch, VPCs are not allowed to connect to outside reso
 
 Public subnets are the subnets which are connected to the internet
 
-Private subnets are the subnets which are not connected to the internet 
+Private subnets are the subnets which are not connected to the internet. If they are connected to another network such as an on prem one, they are still known as private subnets
 
 When we connect to certain resources in AWS, we use URLs. Examples: S3 and Dynamo DB. By default, when a resource in our VPC connects to an S3 bucket, it is addressed by the URL. Connections to these URLs, by default, go through the internet connection. We have to setup AWS endpoints which can be used to avoid routing over the internet. Once we setup these endpoints, connections to these URLs will flow through the endpoints and not the internet gateway. 
 
