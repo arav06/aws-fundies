@@ -209,11 +209,11 @@ The estimate can also be exported so that it can be used in a document or presen
 
 The AWS Trusted Advisor check all your services and gives recommendations about performance, security, fault tolerance, service limits and cost optimization
 
-The advisor looks at all our costs, find out where our money is being spent and lets us know where we can do a better job
+The advisor looks at all our costs, finds out where our money is being spent and lets us know where we can do a better job
 
 It can detect something such as an EC2 instance which is running and is not being used and is sitting idle 
 
-The number of checks is limited as is determined by the chosen support plan
+The number of checks is limited and is determined by the chosen support plan
 
 Higher level support will help in finding more and better ways to reduce costs
 
@@ -222,8 +222,8 @@ It can be found by search for trusted advisor in AWS services
 ### Top 3 ways to lower an AWS Bill
 
 * Terminating underutilized EC2 instances
-* Terminating underutilized EBS instances
-* In S3 Buckets, you can use intelligent tiering which will make it easy to get into the bucket. We can change it to in-frequent access tiering. It will cost more to get to it but costs less to store. In an average business, only 20% of data in a bucket is regularly used.
+* Deleting underutilized EBS drives
+* In S3 Buckets, you can use intelligent tiering which will make it easy to get into the bucket. We can change it to in-frequent access tiering. It will cost more to get to it but costs less to store. In-frequent tiering is used to store files which are rarely accessed. In an average business, only 20% of data in a bucket is regularly used.
 
   ### Quiz
   
@@ -356,7 +356,7 @@ Following instructions to build infrastructure is full of potential errors
 
 To solve this problem, we need a way to declare our infrastructure. Instead of installing a web server, we have code which does it. It gives a declarative language and we say to build 'abcd', 'efgh' and 'ijkl'
 
-If we create an infrastructure using IaC, in a development environment we can easily move the code to the test environment, we get the same infrastructure without configuring additional settings. It is exactly the same
+If we create an infrastructure using IaC in a development environment we can easily move the code to the test environment, we get the same infrastructure without configuring additional settings. It is exactly the same
 
 Once in production, most apps fail. IaC can fix this. There is a one to one relation. It offers reproducibility such that the state in dev environment is the same as the one in the test and production environments 
 
