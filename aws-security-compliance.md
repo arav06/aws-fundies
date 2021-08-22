@@ -264,9 +264,11 @@ Duration - How long it should run for
 
 ### Audit Manager 
 
-Continuous checking and analysis for compliance, regulatory and industry standards and custom controls 
+Continuous checking and analysis of resources for compliance, regulatory and industry standards and custom controls 
 
 It comes with several frameworks with controls which are mapped to industry standards and regulations
+
+Gathers data for checking and analysis 
 
 ### Artifact 
 
