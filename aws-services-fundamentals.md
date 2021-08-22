@@ -612,3 +612,76 @@ Internet gateway
 ```txt
 By the buckets URL
 ```
+
+## Amazon Elastic File System (EFS)
+
+Great way to share files to our clients who are outside/within our infrastructure 
+
+* Elastic File System
+	* Clients 
+	* EFS - Infrequent Access
+* Creating and sharing an EFS share 
+
+Managed data store that automatically scales up and down 
+
+We do not have to worry about provisioning more storage in an EFS share as it is automatic
+
+Automatically copies the data across multiple AZs
+
+Lets say we have 2 AZs in our infrastructure, AZ1 and AZ2. These AZs have one or more data centers. If our EFS share is copied across 2 AZs and if 1 AZ is down, then our data will still be accessible
+
+Using EFS, we can share files inside/outside the cloud, such as sharing the data to a client who is on prem 
+
+Multiple AZs and VPCs can access the same EFS share/shares 
+
+We can also share files between different clients. An EFS share can be used as a central repository for resources which are required by clients
+
+EFS IS NOT SUPPORTED BY WINDOWS, IT ONLY WORKS WITH LINUX 
+
+Lets say that in our VPC we have 2 AZs, AZ1 and AZ2. Clients in an AZ do not directly connect to an EFS share. Each AZ gets a mount target, and the clients connect to the mount target which would give us access to the data in the EFS share. If we had only 1 mount target and that would go down, we would not be able to access the data. If we lost connection to the mount target from AZ1, we can still connect to the mount target in AZ2
+
+Mount targets are used to connect to an EFS share from one or more AZs, such that if 1 mount target is down, we can still access the share from the other AZ
+
+EC2 instances and contains can connect to EFS shares
+
+Machines which are not in our VPC can also connect to an EFS share in our VPC, via a VPN Gateway
+
+EFS has 2 tierings - Standard and Infrequent Access 
+
+In most organizations, only 20% of data is actively used and the other 80% is infrequently accessed. To store this data we will use EFS - Infrequent Access Tiering. It is little more expensive to access, but the cost for storage is less
+
+Approximately, if we store 1 TB of data in EFS - Standard, it will cost $300/month . But if we store only 200GB of data in EFS - Standard which will cost $60/month  and 800GB of data in EFS - Infrequent Access, it will cost $20/month, the total would be only $80/month 
+
+EFS Regional automatically copies data across all AZs
+
+EFS One Zone is used in the case where we can recreate the data we uploaded, if the AZ is down. It will not copy data across AZs but One Zone does save money 
+
+We can create EFS shares with the same name as the id of the shares is what matters 
+
+We connect to an EFS share by using NFS(Network File System)
+
+If we are not being able to connect to our share, we can click on the share, click on 'Attach' and in the bottom we can click on 'User guide'
+
+### Creating and sharing an EFS share 
+
+1. In the services, search for 'efs' and click on 'EFS'
+2. On the right, click on 'Create file system'
+3. Provide a name for the share, provide the VPC where it should exist and click on 'Create' 
+4. Click on the EFS share and in the top right corner click on 'Attach' 
+5. Here, we can see the commands which we can use to the mount the share 
+6. You may see a message saying we do not have any mount targets. To run a mount target, click on 'Manage mount targets'
+7. To delete the EFS share, in the top right corner click on 'Delete' and provide the id of the share and click on 'Confirm'
+
+### Quiz
+
+1. How do you increase the amount of storage available in an EFS share?
+
+```txt
+EFS automatically scales up and down
+```
+
+2. You are helping with a new architecture for both Linux and Windows servers. The EC2 instances will need to share storage. It has been suggested that EFS should be used. Will this work and why or why not?
+
+```txt
+EFS will not work because it only supports Linux
+```
