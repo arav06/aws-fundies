@@ -934,7 +934,7 @@ Get content to users in a faster way
 * What is Amazon CloudFront
 * Understanding CDNs
 * Topology of CloudFront 
-* Configuring CloudFront
+* Creating a CloudFront Distribution
 
 CloudFront is a content delivery network to securely deliver data, videos, apps, APIs globally at a high speed and low latency
 
@@ -946,7 +946,7 @@ These caching servers are known as content delivery network(CDN) servers
 
 Used to roll out updates for games 
 
-CloudFront has 225+ sites 
+CloudFront has 255+ sites 
 
 CloudFront has multiple layers of caching which increases the chance of finding the required content in that caching server
 
@@ -958,7 +958,9 @@ Lets say that we have a user filling out a form on our website and this form is 
 
 In AWS, an S3 bucket can be used as a source for a CloudFront distribution 
 
-### Configuring CloudFront
+We can create a CloudFront Distribution to share content from a server in say Mumbai to people in USA/Europe/South America, with low latency and fast delivery 
+
+### Creating a CloudFront Distribution
 
 1. In services search for 'cloud front' and click on 'CloudFront'
 2. Click on 'Create a CloudFront distribution'
