@@ -984,3 +984,135 @@ Amazon S3
 ```txt
 CloudFront is a content delivery system in AWS
 ```
+
+## Databases on AWS
+
+* Customer managed databases on AWS 
+* AWS Relational Database Service(RDS) 
+* Amazon DynamoDB 
+* Amazon Redshift 
+* AWS Database Migration Service(DMS)
+
+### Customer managed databases on AWS
+
+We are going to run our own database in an EC2 instance 
+
+Run an EC2 instance --> Download the software --> Load it on to the machine 
+
+Similar to what is used on prem
+
+This is an example of undifferentiated lifting 
+
+Used in the case where we want full control of our database or there maybe features in this database, provided by the vendor, that are not available in AWS
+
+When our app starts blowing up, we have to deal with patching, replication, backups, tuning, monitoring and high availability, with regards to the database. T o solve this problem, we can use AWS managed databases such as RDS 
+
+### AWS Relational Database Service(RDS)
+
+Managed database. Patching, replication, backups, tuning, monitoring and high availability are handled by AWS
+
+Many management tasks are handled by AWS such as checking if the hardware is alright 
+
+The time we spent on traditional databases is taken by RDS
+
+RDS supports MySQL, MariaDB, Oracle, MS SQL Serer, Amazon Aurora and PostgreSQL
+
+Aurora is Amazon's purpose built, cloud focused database 
+
+Query Editor is used to queries on our database 
+
+RDS LETS US RUN A DATABASE ON AN EC2 INSTANCE, WITHOUT US NEEDING TO CONFIGURE ANYTHING NOR TAKE CARE OF THE DATABASE
+
+We should create our database in more than 1 AZ
+
+#### Launching a MySQL database using RDS
+
+1. In the services, search for 'rds' and click on 'RDS'
+2. Click on 'Create database'
+3. The first option is used to select a Standard or Easy create. In Standard, we will configure the settings of our database but in Easy, AWS configures most of the setting, based on the best practices. If you are using RDS for the first time, select 'Easy create'. 90% of the time, we use 'Standard create' when we are in production 
+4. Next we can choose the type of database. Select 'MySQL' and we get the MySQL Community Edition and a note from AWS, letting us know about the issues/limitations of using MySQL
+5. We can then select the database version
+6. Templates are a way to choose the basic configurations that are needed for the place where the database will be setup, such as production/development/test We will select 'Free tier'. Note: Some databases such as Aurora do not have a free option
+7. Now we can provide a name for the database and the username and password for the administrator. Use a strong password
+8. Then we can select the instance type of the server on which the databases will be running. Select 'db.t2.micro' as it is the free option
+9. We can allocate the needed storage. Turn off 'Enable storage autoscaling'. It is a way to increase storage once a limit is exceeded 
+10. Select the VPC and disable 'Public access'
+11. Now provide a security group for the database server and the AZ
+12. We can scroll to the bottom and it would show us the costs, if we were not using free tier. Click on 'Create database'
+13. After a few minutes, we should see that our database has been created. Click on the database name and now we can see the statistics 
+14. To delete the database, go back and click on the circle next to the database name and then click on 'Actions'
+15. Click on 'Delete'. When deleting the database, RDS asks us if we want a backup of our database. For now we will not create a backup. So deselect 'Create final snapshot' and type 'delete me' in the text box. Check the option which says 'I acknowledge....' and click on 'Delete'
+
+### Amazon Aurora 
+
+Most databases such as Oracle and MS SQL are databases which were built for on prem 
+
+Aurora is Amazon's relation database which is the built for the cloud
+
+Compatible with MySQL and PostgreSQL
+
+Gives improved performance. Up to 3x higher throughput than stock PostgreSQL and up to 5x higher throughput than standard MySQL
+
+Aurora is used in enterprise apps, online/inventory catalogs and web and mobile gaming
+
+AURORA IS AN ENTERPRISE CLASS DATABASE 
+
+### Amazon DynamoDB
+
+High performance key-value database
+
+Great performance. Capable of single digit millisecond read latency. The more pressure we put on it, the more queries continue, the faster it is 
+
+It can be made faster using DynamoDB Accelerator(DAX). It is a caching server that sits in front of DynamoDB which has sub millisecond read latency
+
+DynamoDB can be used in realtime games which need to update player scores
+
+IT IS A NoSQL DATABASE
+
+SQL is a very intelligent system and it saves space
+
+In SQL, we are storing 100s of tables to store a lot of data
+
+NoSQL can be used with a single table and we can repeat the data over and over again and we can make faster queries
+
+By using NoSQL, we are trading complex data design to conserve space for cheap storage and fast, simple queries 
+
+### Amazon Redshift 
+
+Managed database
+
+Redshift is a data warehouse 
+
+We have structured and semi-structured data in an S3 bucket. Redshift will grab the data and bring it in. When querying an S3 Data Lake, we have tons of data. Instead of storing the data in S3, we can store it in Redshift 
+
+Designed to work with other analytic servers/services. It can grab data from an S3 bucket and send the data to Amazon QuickSight 
+
+Amazon QuickSight is used to create beautiful reports about data 
+
+### AWS Database Migration Service(DMS)
+
+WAY OF MIGRATING DATABASES FROM ON PREM TO THE CLOUD
+
+Can move a majority of objects, views, stored procedures and functions 
+
+We can use different source and target databases such as shifting data from an expensive on prem database to something such as MySQL in the cloud 
+
+DMS CAN BE USED TO MIGRATE DATABASES TO/FROM THE CLOUD
+
+We can take the database from on prem to the cloud and when we cannot move the entire database to the cloud, if customers are constantly adding data, then DMS can continue to push data 
+
+### Quiz
+
+1. Which database is supported by the AWS Relational Database Service (RDS)?
+
+```txt
+MySQL
+```
+
+2. Amazon Aurora is compatible with which database technologies?
+
+```txt
+MySQL and PostgreSQL
+```
+
+***
