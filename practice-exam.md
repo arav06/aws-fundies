@@ -25,7 +25,7 @@ Well-Architected Framework
 Amazon Macie
 ```
 
-5. You have been asked to asses your organization's architecture in terms of best practices around cost optimization and fault tolerance. What would be the quickest method for accomplishing this task?
+5. You have been asked to assess your organization's architecture in terms of best practices around cost optimization and fault tolerance. What would be the quickest method for accomplishing this task?
 
 ```txt
 Use AWS Trusted Advisor
@@ -58,7 +58,7 @@ Amazon DynamoDB
 10. What service can be used to help mitigate the effects of DDOS attacks?
 
 ```txt
-AWS Shield and Shield Plus
+AWS Shield and Shield Advanced
 ```
 
 ***
