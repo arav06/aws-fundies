@@ -1115,4 +1115,18 @@ MySQL
 MySQL and PostgreSQL
 ```
 
+## Load Balancers 
+
+Lets say that our business has a website which is running on a server. 100s of clients are visiting the website and everything is going great. After sometime, our clients increase and now 1000s of clients are visiting the website, which is causing the CPUs and RAMs to crash. We need another server and so we buy another server to handle the load. But this will not work and people are still hitting the 1st server. To tell people to not go to the 1st server all the time and to evenly distribute the load, we will use a load balancer. We'll setup a rule such that when people are visiting our website, go to the load balancer and not the 1st server. The load balancer will ensure that when people are visiting our website, that the load between the 2 servers are being distributed evenly 
+
+In AWS, load balancing is known as Elastic Load Balancing(ELB)
+
+It is a managed service
+
+3 types of load balancers: classic(old, v1), application(new, v2) and network(new, v2). Amazon recommends using v2 load balancers 
+
+AWS guarantees that the load balancer will be working and takes care of the updates, maintenance and high availability 
+
+Costs less to setup your own load balancer but will require more effort from us 
+
 ***
