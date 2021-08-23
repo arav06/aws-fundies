@@ -642,7 +642,7 @@ Lets say that in our VPC we have 2 AZs, AZ1 and AZ2. Clients in an AZ do not dir
 
 Mount targets are used to connect to an EFS share from one or more AZs, such that if 1 mount target is down, we can still access the share from the other AZ
 
-EC2 instances and contains can connect to EFS shares
+EC2 instances and containers can connect to EFS shares
 
 Machines which are not in our VPC can also connect to an EFS share in our VPC, via a VPN Gateway
 
@@ -650,7 +650,9 @@ EFS has 2 tierings - Standard and Infrequent Access
 
 In most organizations, only 20% of data is actively used and the other 80% is infrequently accessed. To store this data we will use EFS - Infrequent Access Tiering. It is little more expensive to access, but the cost for storage is less
 
-Approximately, if we store 1 TB of data in EFS - Standard, it will cost $300/month . But if we store only 200GB of data in EFS - Standard which will cost $60/month  and 800GB of data in EFS - Infrequent Access, it will cost $20/month, the total would be only $80/month 
+Approximately, if we store 1 TB of data in EFS - Standard, it will cost $300/month . But if we store only 200GB of data in EFS - Standard which will cost $60/month  and 800GB of data in EFS - Infrequent Access, which will cost $20/month, the total would be only $80/month 
+
+EFS has 2 modes: Regional and One Zone 
 
 EFS Regional automatically copies data across all AZs
 
@@ -658,7 +660,7 @@ EFS One Zone is used in the case where we can recreate the data we uploaded, if 
 
 We can create EFS shares with the same name as the id of the shares is what matters 
 
-We connect to an EFS share by using NFS(Network File System)
+We connect to an EFS share by using NFS(Network File Sharing)
 
 If we are not being able to connect to our share, we can click on the share, click on 'Attach' and in the bottom we can click on 'User guide'
 
@@ -704,7 +706,7 @@ EFS will not work because it only supports Linux
  
  When we build using EB, we build an environment and if we do not want something, we can tear it down. The advantage is that we will not have resources for which we will be charged, even after it has been terminated. The disadvantage is that if we have a database which has important data and we delete the environment, then we lose all the data. We can backup the data or build the database separately and link to it with our code
  
- Many security professionals do not allow the use of EB in their organization. They understand the idea of EB but are troubled with the fact that EB is building our infrastructure. To check if EB is alright to use for our organization, we should check the Services in Scope website. If we are going to be processing cards, we should check if EB is PCI compliant and if we are working with the Federal Government, we should if FedRAMP compliant
+ Many security professionals do not allow the use of EB in their organization. They understand the idea of EB but are troubled with the fact that EB is building our infrastructure. To check if EB is alright to use for our organization, we should check the Services in Scope website. If we are going to be processing cards, we should check if EB is PCI compliant and if we are working with the Federal Government, we should if it is FedRAMP compliant
  
  If the name of an EB environment has '(terminated)' at it's end, it means it is being deleted/has been deleted 
  
@@ -712,7 +714,7 @@ EFS will not work because it only supports Linux
  
  It takes 10-15 minutes for an environment to be completely deleted 
  
- EB support Apache, IIS, Node, Docker, etc
+ EB supports Apache, IIS, Node, Docker, etc
  
   ### Deploying an app using code provided in Elastic Beanstalk
  
@@ -767,13 +769,11 @@ We have our code which is read to go and we upload it to lambda. Once we upload 
 
 Many lambda functions can be chained such that instead of having one code base, we can have the code broke up into many lambdas 
 
-In the free tier, we get 1 million free requests. When lambda run, it has an execution role which limits the permissions of the function 
-
-Lambda should be used during the following cases:
+In the free tier, we get 1 million free requests. When lambda runs, it has an execution role which limits the permissions of the function 
 
 Cold start - When first starting lamba. To prevent this, we can call the lamba function every 15 minutes to make sure that it is running 
 
-* App uses less than 10 GiB or memory
+* The app uses less than 10 GiB or memory
 * Lambda can only run for 15 minutes
 * Lambda's cold start takes a lot of time and it will reset after 15 minutes of inactivity 
 * Functions have to be well written and tightly defined 
@@ -820,11 +820,11 @@ Removes the need for provisioning and managing
 
 We have to pay for the resources which are being used by our containers 
 
-We run task(pods) in an isolated environment, improving security and isolation 
+We run tasks(pods) in an isolated environment, improving security and isolation 
 
 When using Fargate we have to take into consideration, the costs for the vCPU used, memory used and the supported services used
 
-Carefully monitor you bill when using Fargate by using billing alarms 
+Carefully monitor your bill when using Fargate by using billing alarms 
 
 ### Quiz
 
