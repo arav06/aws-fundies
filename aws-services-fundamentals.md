@@ -1005,7 +1005,9 @@ This is an example of undifferentiated lifting
 
 Used in the case where we want full control of our database or there maybe features in this database, provided by the vendor, that are not available in AWS
 
-When our app starts blowing up, we have to deal with patching, replication, backups, tuning, monitoring and high availability, with regards to the database. T o solve this problem, we can use AWS managed databases such as RDS 
+When our app starts blowing up, we have to deal with patching, replication, backups, tuning, monitoring and high availability, with regards to the database. To solve this problem, we can use a managed database. 
+
+Managed databases are databases which do not require the user to handle most of the fundamental operations such as patching, backups, monitoring, etc
 
 ### AWS Relational Database Service(RDS)
 
@@ -1013,15 +1015,15 @@ Managed database. Patching, replication, backups, tuning, monitoring and high av
 
 Many management tasks are handled by AWS such as checking if the hardware is alright 
 
-The time we spent on traditional databases is taken by RDS
+The time we spend setting up and configuring a traditional database is taken by RDS
 
 RDS supports MySQL, MariaDB, Oracle, MS SQL Serer, Amazon Aurora and PostgreSQL
 
 Aurora is Amazon's purpose built, cloud focused database 
 
-Query Editor is used to queries on our database 
+Query Editor is used to execute queries on our database 
 
-RDS LETS US RUN A DATABASE ON AN EC2 INSTANCE, WITHOUT US NEEDING TO CONFIGURE ANYTHING NOR TAKE CARE OF THE DATABASE
+RDS LETS US RUN A DATABASE ON AN EC2 INSTANCE, WITHOUT US NEEDING TO CONFIGURE MUCH NOR TAKE CARE OF THE DATABASE
 
 We should create our database in more than 1 AZ
 
@@ -1069,11 +1071,9 @@ DynamoDB can be used in realtime games which need to update player scores
 
 IT IS A NoSQL DATABASE
 
-SQL is a very intelligent system and it saves space
+In SQL, we are creating 100s of tables to store a lot of data
 
-In SQL, we are storing 100s of tables to store a lot of data
-
-NoSQL can be used with a single table and we can repeat the data over and over again and we can make faster queries
+In NoSQL we can create a single table and we can repeat the data over and over again and we can make faster queries
 
 By using NoSQL, we are trading complex data design to conserve space for cheap storage and fast, simple queries 
 
@@ -1083,7 +1083,9 @@ Managed database
 
 Redshift is a data warehouse 
 
-We have structured and semi-structured data in an S3 bucket. Redshift will grab the data and bring it in. When querying an S3 Data Lake, we have tons of data. Instead of storing the data in S3, we can store it in Redshift 
+We have structured and semi-structured data in an S3 bucket. Redshift will grab the data and bring it in. 
+
+When querying an S3 Data Lake, we have tons of data. Instead of storing the data in S3, we can store it in Redshift 
 
 Designed to work with other analytic servers/services. It can grab data from an S3 bucket and send the data to Amazon QuickSight 
 
