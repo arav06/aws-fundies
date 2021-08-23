@@ -926,3 +926,59 @@ Capture, load, and transform data streams for near real-time analytics
 ```txt
 Kinesis Information Flow
 ```
+
+## Amazon CloudFront
+
+Get content to users in a faster way
+
+* What is Amazon CloudFront
+* Understanding CDNs
+* Topology of CloudFront 
+* Configuring CloudFront
+
+CloudFront is a content delivery network to securely deliver data, videos, apps, APIs globally at a high speed and low latency
+
+We running a website whose server in New York and aimed that this website will only be used by people in USA. However it gains popularity and people from Africa, Australia, Asia and Europe also visit our website. These people will have extremely slow connections, lot of latency and slow delivery of the data, as the server is not close to them
+
+To solve this problem, we can use caching servers. These are servers all over the world where we can put copies of our data and thus get rid of the high latency and slow connections. When a customer make a call to the content, the request goes to the server. The server checks if it has the required data. If it does not it makes a call to the original server in New York. The original server then sends the data to the caching server which will forward it to the user. At the same time, the caching server stores the contents in its cache. Anyone close to that caching server will get low latency. If another person also requests for that data, then the request is sent to the server which sees that it already has the required data and immediately delivers it
+
+These caching servers are known as content delivery network(CDN) servers
+
+Used to roll out updates for games 
+
+CloudFront has 225+ sites 
+
+CloudFront has multiple layers of caching which increases the chance of finding the required content in that caching server
+
+Can pull data from S3 buckets, EC2 instances, Load Balancers and from media 
+
+CloudFront is a global service 
+
+Lets say that we have a user filling out a form on our website and this form is identified using the 'Field-level Encryption' tool. Once this form data is sent to the CloudFront server, it will encrypt the form data at this server. As the content comes back, we have encrypted data
+
+In AWS, an S3 bucket can be used as a source for a CloudFront distribution 
+
+### Configuring CloudFront
+
+1. In services search for 'cloud front' and click on 'CloudFront'
+2. Click on 'Create a CloudFront distribution'
+3. Specify the origin domain name. It is a textbox and a dropdown. This is the location from where content will be pulled. Lets specify an S3 bucket
+4. If there is a folder inside that location, you can specify that. This will only share that folder. Origin Shield is a new caching ability giving better performance 
+5. We do not know where our content will be pulled from. For the price class we should leave it as 'Use All Edge Locations'. But if we want caching in only certain areas, we can do that as well. 
+6. When using cloudfront, the URL for the distribution is something like 'd11fj1221321bnndw.cloudfront.net'. In 'Alternate Domain Names', we can specify a different domain name such as 'www.example.com'. Now it will not use the cloudfront domain name 
+7. 'Default Root Object' can be used to redirect users to what they have to see. If the URL for our cloudfront distribution is 'www.example.com', and we want to redirect users to 'test.html' when they visit the website, then we can specify the 'Default Root Object' as 'https://example.com/test.html'
+8. Now we can scroll to the bottom and click on 'Create distribution'
+
+### Quiz
+
+1. Which of the following can be a source for a CloudFront distribution?
+
+```txt
+Amazon S3
+```
+
+2. What is the purpose of Amazon CloudFront?
+
+```txt
+CloudFront is a content delivery system in AWS
+```
