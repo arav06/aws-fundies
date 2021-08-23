@@ -1049,7 +1049,7 @@ We should create our database in more than 1 AZ
 
 Most databases such as Oracle and MS SQL are databases which were built for on prem 
 
-Aurora is Amazon's relation database which is the built for the cloud
+Aurora is Amazon's relational database which is the built for the cloud
 
 Compatible with MySQL and PostgreSQL
 
