@@ -780,7 +780,7 @@ Cold start - When first starting lamba. To prevent this, we can call the lamba f
 * We have to understand monitoring in AWS using services such as CloudTrail and CloudWatch. Monitoring is important when we have many lambdas
 * Stateless or can re-engineered as stateless
 
-If we want to use more than 10 GiB of memory and run the code for more than 15 minutes, we can use contains
+If we want to use more than 10 GiB of memory and run the code for more than 15 minutes, we can use containers
 
 ### Containers 
 
@@ -806,7 +806,7 @@ ECS clusters are groups of EC2 instances that are running containers
 
 ECS can monitor EC2 instances for free capacity to run containers
 
- Elastic Container Registry(ECR) is a repository from where we can pull 
+Elastic Container Registry(ECR) is a repository from where we can pull containers
 
 We have a container and we register it in the ECR and now ECS can pull the container from the ECR. ECS gets indicated what we expect to run and it can push out the number of containers which we indicate to the ECS cluster of servers that it has setup. ECS manages the above. We can put our containers in ECR, ECS pulls the containers and then pushes the containers on to the EC2 instances and runs the number of containers we want to 
 
