@@ -2,6 +2,8 @@
 
 > Arav Budhiraja | 20th August 2021
 
+Course Link: https://my.ine.com/Cloud/courses/47843060/aws-security-compliance
+
 ## Topics
 
 1. Identity and Access management(IAM)
