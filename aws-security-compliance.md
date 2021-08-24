@@ -12,7 +12,7 @@
 1. Describe and understand the purpose for 
 	- Identity and Access management(IAM)
 		- Reality of security in the cloud
-		- Entities in IAM(users, groups, roles, etc)
+		- Entities in IAM(users, groups, roles)
 		- Policy, policy evaluations and the AWS Policy Generator
 2. Trusted Advisor
 3. Inspector 
@@ -115,7 +115,7 @@ The group's place is 'flat'
 
 Used to assign a user a different identity so that they can assume they have permissions to perform a task in AWS
 
-Let's say user 'b' has EC2 Admin role and so cannot access S3 Buckets. We can create a role for S3 Admin and assign the role to user 'b'. Note: Now user 'b' can access S3 Buckets BUT CAN NO LONGER ACCESS EC2 INSTANCES 
+Let's say user 'b' has EC2 Admin permission and so cannot access S3 Buckets. We can create a role for S3 Admin and assign the role to user 'b'. Note: Now user 'b' can access S3 Buckets BUT CAN NO LONGER ACCESS EC2 INSTANCES 
 
 Available to users and apps 
 
@@ -151,7 +151,7 @@ It is used to isolate the work
 
 
 1. The decision to let a user access a resource starts with a default explicit 'deny'
-2. Then the policies of the request are evaluated. It checks the resources, principal, action and conditions. The order does not matter
+2. Then the policies of the request are evaluated. AWS checks the resources, principal, action and conditions. The order does not matter
 3. If AWS finds a deny instruction which would apply to the request, it will not allow the user to access that resource
 4. If no explicit deny is found, AWS checks for allow instructions in the request
 5. If even 1 is found, the user is allowed to proceed 
@@ -248,7 +248,7 @@ To use it, we have to create an EC2, tag the instance so that inspector can iden
 
 To use it we will search for 'inspector' in the services 
 
-Network assessment - Checks network configuration and checks port which are reachable from outside the VPC. Does not require an agent. If we had 100 instances and we would run inspector weekly for a month, the cost would be $61 per month
+Network assessment - Checks network configuration and checks ports which are reachable from outside the VPC. Does not require an agent. If we had 100 instances and we would run inspector weekly for a month, the cost would be $61 per month
 
 Host assessment - Checks for vulnerable software and ways to improve the security. Requires an agent. If we had 100 instances and we would run inspector weekly for a month, the cost would be $120 per month
 
