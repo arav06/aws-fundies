@@ -23,7 +23,7 @@ Course Link: https://my.ine.com/Cloud/courses/756bf216/aws-management-concepts
 3. Billing in AWS - Billing Console and Calculator 
 4. Well Architected Framework- Tool and Lenses
 5. Infrastructure as Code with AWS CloudFormation
-6. AWS Organization
+6. AWS Organizations
 
 ## AWS Support Plans
 
@@ -34,7 +34,7 @@ A workload is a collection of resources and code that can deliver a profit.
 
 To determine which support plan we have to see what we will be doing in the Cloud
 
-What we can be doing can be from just learning to mission critical workload 
+What we can be doing can be from just learning to a mission critical workload 
 
 Mission critical workload - Something in the cloud which is generating profit, which a business depends on. THIS IS NOT A PERSONAL PROJECT. 
 
@@ -45,7 +45,7 @@ Aimed at when you are learning about AWS and experimenting and gaining knowledge
  Included in ALL AWS ACCOUNTS
  
  - 24/7 access to customer service - Email/Text support. Not gonna get a fast result. Used when asking questions which do not require an immediate results. The support provides documentations, whitepapers and a support forum. 
- - AWS Trusted Advisor - Provide recommendations that help you follow best practices in AWS. Checks for ways to improve your infrastructure, security, performance, reduce costs and monitor service quotas. 7 checks only.
+ - AWS Trusted Advisor - Provides recommendations that help you follow best practices in AWS. Checks for ways to improve your infrastructure, security, performance, reduce costs and monitor service limits. 7 checks only.
  - AWS Personal Health Dashboard: Shows you what is going on in your infrastructure at the moment. 
  - BASIC SUPPORT IS FREE
 
@@ -92,7 +92,7 @@ Aimed at large projects whose profit can be measured in seconds
 1. Basic: Free and great if you're just starting out
 2. Developer: Experimenting with workloads. Little better response time and more access to the systems
 3. Business: Running a workload which will generate a profit
-4. Enterprise: Run a workload which has to be running and is essential for a business
+4. Enterprise: Run a workload which has to be up and is essential for a business
 
 ![support-plans](support-plans.png)
 
@@ -123,13 +123,11 @@ Tagging is a way of adding metadata to identify, categorize and secure AWS resou
 
 When creating a tag, we have to specify a key and it's value
 
-If we are creating an S3 Bucket for a customer, we add a tag such as 'Owner' and it's value would be an email such as 'test@test.com'. So when a person is going through the resources and wants to know who owns this bucket, the person can see the tag which gives them the email. Another tag is to specify whether a bucket can be deleted. We can give the key as 'CanBeDeleted' and value as 'Yes' or 'No'. 
+If we are creating an S3 Bucket for a customer, we add a tag such as 'Owner' and it's value would be an email such as 'test@test.com'. So when a person is going through the resources and wants to know who owns this bucket, the person can see the tag which gives them the email. Another tag is to specify whether a bucket can be deleted. We can give the key as 'CanBeDeleted' and value as 'Yes' or 'No'. TAGS CAN BE FREELY NAMED
 
 CLOUD IS NOT AN IT OPERATION, IT IS A BUSINESS STRATEGY 
 
   A cross functional team should be organized to identify the tag requirements. The IT Team should not only create tags, they should ask people such as HR and Finance Team.
-  
-  TAGS CAN BE FREELY NAMED
   
   The IT team can organize a tag requirements workshop so contributors can work together to identify the required tags
   
@@ -267,7 +265,7 @@ Provides a list of questions with regards to the pillars. It provides guidance b
 
 Lets you create a workload and you have to fill up details about it 
 
-Once a workload is created, the security team can come and handle the security workload, the operations team can deal with the operational excellence and the finance team can deal with the cost optimization 
+Once a workload is created, the security team can come and handle the security part, the operations team can deal with the operational excellence and the finance team can deal with the cost optimization 
 
 ### Well-Architected Lenses
 
@@ -326,7 +324,7 @@ Critical for auditing resources for compliance
 
 Helps in security analysis and automation 
 
-Trails can be delivered to CloudWatch when suspicious logs are detected and then  a trigger can be setup to alert the person via email/text
+Logs can be delivered to CloudWatch when suspicious logs are detected and then a trigger can be setup to alert the person via email/text
 
 ### Quiz
 
@@ -390,7 +388,7 @@ Great utility in AWS that lets us take many AWS accounts and bring them under on
 
 * AWS Organizations - Basics, Management, Billing 
 
-We have a company which is growing. The company has many departments which is creating many accounts for their environments such as dev, testing and production 
+We have a company which is growing. The company has many departments which are creating many accounts for their environments such as dev, testing and production 
 
 To handle this growth, we will use AWS organizations which will let us centrally manage all the accounts. You can create and apply policies and it will apply it across the entire infrastructure. It gives central security and we can audit all the organizations from one place
 
