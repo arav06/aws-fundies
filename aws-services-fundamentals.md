@@ -175,7 +175,7 @@ AWS uses traditional servers, storage and networking equipment
 
 They bring all of the above together and put it in a building. These buildings are known as data centers
 
-In AWS, the data layer is the place in which users put our information into AWS
+In AWS, the data layer is the place in which users put information into AWS
 
 #### Features of AWS Data Centers
 
@@ -206,7 +206,7 @@ Examples: us-east-1a and us-east-1b. us-east-1 is a region and a,b and are the A
 * All network traffic between AZs are encrypted 
 * AZs are physically separated from one another, but are within 60 miles of each other 
 
-As of 2021, there are 80 Availability Zones in the entire world, not in each region(approx)
+As of 2021, there are 80 Availability Zones in the entire world(approx), not in each region
 
 ### AWS Regions 
 
@@ -220,7 +220,7 @@ Allows developers to use the infrastructure that complies with data regulations 
 
 As of 2021, there are 25 regions(approx). Examples: ap-south-1, us-east-1
 
-Our region is displayed in the top right corner, next to your username 
+Our region is displayed in the top right corner, next to the username 
 
 Upon clicking on it, we can see the other regions and their short forms 
 
@@ -235,7 +235,7 @@ S3 as a service is global but the buckets can be setup in different regions
 1. Data Regulations:We have to check if there are regulatory considerations for the data which will be processed
 2. AWS Services: Are the required AWS services available in that region? AWS DOES NOT PUSH OUT NEW SERVICES TO REGIONS SIMULTANEOUSLY. It tends to roll out services from 1 region to the next and normally starts from Virginia 
 3. Geographic Location: Is the region geographically near your intended end users? We should not select the region as Australia if we want our end users to be people from USA/South America/Europe
-4. Fault Tolerance: Do we need the highest levels of fault tolerance from the infrastructure? We may have to setup our app in more than 1 region, if 1 region does not support a requirement
+4. Fault Tolerance: Do we need the highest levels of fault tolerance from the infrastructure? We may setup our infrastructure in another region to ensure high availability
 
 ### Amazon Virtual Private Cloud(VPC)
 
@@ -257,7 +257,9 @@ To get low latency to the end users, we will use a content distribution network(
 * Speeds up delivery of websites and speeds up live and on-demand video streaming
 * Automatically routes traffic to the most performant AWS edge locations 
 
-We have an app in Ohio but our user is in Rio. The first time the user accesses the website, a request is sent to the CloudFront site in Rio. The request is then sent from the site at Rio to the site in Ohio. The site in Ohio then sends the contents of the website to the site in Rio. The site in Rio stores the website contents in it's cache and then forwards the contents to the user in Rio. At the same time, if another user also accesses the website, then a request is sent to the site in Rio which instantly forwards the website contents to the user. It does not request the site in Ohio for the website since it has stored the contents in it's cache. This will offer much lower latency and quicker response time.
+The places where CloudFront sites are located are known as edge locations
+
+We have an app in Ohio but our user is in Rio. The first time a user accesses the website, a request is sent to the CloudFront site in Rio. The site checks if it already has the required contents in its cache. If it does not, the request is then sent from the site at Rio to the site in Ohio. The site in Ohio then sends the contents of the website to the site in Rio. The site in Rio stores the website contents in it's cache and then forwards the contents to the user in Rio. At the same time, if another user also accesses the website, then a request is sent to the site in Rio which instantly forwards the website contents to the user. It does not request the site in Ohio for the website since it has stored the contents in it's cache. This will offer much lower latency and quicker response time.
 
 ### Quiz
 
@@ -312,7 +314,7 @@ AMIs have storage options to attach to the EC2 instance
 
 AMI partners up with the instance type
 
-AMI which are free have 'Free tier eligible' mentioned below
+AMIs which are free have 'Free tier eligible' mentioned below
 
 * 'Quick Start' consists of AMIs which can be spun up instantly without much configuration
 * 'My AMIs' has AMIs which we have spun up and taken a snapshot 
@@ -321,7 +323,7 @@ AMI which are free have 'Free tier eligible' mentioned below
 
 ### Instance Types
 
-The virtual hardware of our virtual server
+The virtual hardware of our server
 
 AWS gives us categories for the type of hardware we need: general, compute, memory, accelerated, storage 
 
@@ -378,7 +380,7 @@ We can name our security groups
 
 In security groups, rules are stateful
 
-Lets say that we have a website running on port 443(HTTPS) and using our security group, we allow all inbound traffic to port 443. Now, we have a device connected to the internet which visits our website. Once it does so, it hits the security group which allows it to access port 443. During this negotiation, the device provides a high port number(port higher than 1024) such as 48923, to which the contents of the website should be sent back. Now, the security groups realizes that the traffic on port 443 is legitimate and the client wants the website contents on port 48923. So, the security groups automatically allows outbound traffic on port 48923
+Lets say that we have a website running on port 443(HTTPS) and using our security group, we allow all inbound traffic to port 443. Now, we have a device connected to the internet which visits our website. Once it does so, it hits the security group which allows it to access port 443. During this negotiation, the device provides a high port number(port higher than 1024) such as 48923, to which the contents of the website should be sent back. Now, the security group realizes that the traffic on port 443 is legitimate and the client wants the website contents on port 48923. So, the security groups automatically allows outbound traffic on port 48923
 
 The rules of a security group such as 'SG-1' can be applied to more than one EC2 instance. If we allow inbound traffic on port 22(SSH) for 'SG-1',  then all the instances whose security group is 'SG-1' will follow that rule and allow inbound connection on port 22
 
@@ -400,15 +402,17 @@ There is no long term commitment, capacity planning  or purchasing required
 
 For a server which will be running for a long time such as 1 year or 3 years 
 
-Change the billing model to a complete/partial/none up front 
+Changes the billing model to a complete/partial/none up front 
 
 There are two types: Standard and Convertible 
 
 In an RI, if we purchase a system, then IT WILL BE A PERMANENT ACTION
 
-Convertible RI will let us upgrade our instance from something such as M5 to M6
+Convertible RI will let us upgrade our instance from something such as M5 to M6 or to a new version
 
 RI IS A BILLING MODEL 
+
+AWS offers Standard RIs for 1-year or 3-year terms
 
 AWS has finite hardware and with so many customers they may not have the hardware you require. If this system is for a mission critical workload, then you need a zonal RI which require us to pick an availability zone in our VPC. Once this is done, it becomes a capacity reservation which lets us start up the server which is defined in the RI
 
@@ -420,11 +424,11 @@ AWS has finite hardware and with so many customers they may not have the hardwar
 
 #### Spot 
 
-Allows us to not spend a tremendous amount of money by bidding on spare Amazon EC2 capacity 
+Allows us to not spend a tremendous amount of money by bidding on spare Amazon EC2 instances
 
 Up to 90% off compared to On-Demand 
 
-We can only use stateless workload i.e. we can shutdown the workload and bring it back up and it will not affect the way the workload is running. The data for it is being stored in a database and the workload can make calls to the database to get the data 
+We can only use stateless workloads i.e. we can shutdown the workload and bring it back up and it will not affect the way the workload is running. The data for it is being stored in a database and the workload can make calls to the database to get the data 
 
 These servers can be reclaimed within a 2 minute warning 
 
@@ -432,7 +436,7 @@ Lets say that we are bidding $5 for a server which costs $10. Gradually the pric
 
 ### Dedicated Instances and Dedicated Hosts
 
-We have a situation where our workload need an environment in which the app on the server does not want other servers in the system to access it's memory, due to regulatory concerns
+We have a situation where our workload needs an environment in which the app on the server does not want other servers in the system to access it's hardware, due to regulatory concerns
 
 Dedicated instances and hosts let us say 'this physical system is my machine and no one else can access its resources' 
 
@@ -546,8 +550,6 @@ In S3, the place where objects are stored are known as buckets
 
 ### Creating and attaching an EBS volume
 
-* Attach the volume to an EC2 instance. Ensure that you have a running EC2 instance 
-
 1. In the console, we will search for 'ec2' since EBS is related to EC2
 2. In the left bar, scroll down and find 'Elastic Block Store'. Ensure that we are in the right region
 3. Click on 'Volumes' and then in the top left we will click on 'Create volume'
@@ -660,7 +662,7 @@ EFS One Zone is used in the case where we can recreate the data we uploaded, if 
 
 We can create EFS shares with the same name as the id of the shares is what matters 
 
-We connect to an EFS share by using NFS(Network File Sharing)
+We connect to an EFS share by using the NFS(Network File Sharing) protocol
 
 If we are not being able to connect to our share, we can click on the share, click on 'Attach' and in the bottom we can click on 'User guide'
 
@@ -698,7 +700,7 @@ EFS will not work because it only supports Linux
  
  Automates deployment of apps 
  
- We supply code and it takes care of the rest. We can write the code in python, ruby, php, java, go and even docker containers. Once we have our code, we specify the architecture to Elastic Beanstalk and it takes care of the rest. It can be used to run web servers IIS, Apache, Nginx
+ We supply code and it takes care of the rest. We can write the code in python, ruby, php, java, go and even docker containers. Once we have our code, we specify the architecture to Elastic Beanstalk and it takes care of the rest. It can be used to run web servers such as IIS, Apache, Nginx
  
  Using Elastic Beanstalk, we can create the following infrastructure: scaling and load balancing, monitoring, logging and tracing, health status and database instances 
  
@@ -773,7 +775,7 @@ In the free tier, we get 1 million free requests. When lambda runs, it has an ex
 
 Cold start - When first starting lamba. To prevent this, we can call the lamba function every 15 minutes to make sure that it is running 
 
-* The app uses less than 10 GiB or memory
+* If we are running an app on lambda, it has to use less than 10 GiB or memory
 * Lambda can only run for 15 minutes
 * Lambda's cold start takes a lot of time and it will reset after 15 minutes of inactivity 
 * Functions have to be well written and tightly defined 
@@ -784,7 +786,7 @@ If we want to use more than 10 GiB of memory and run the code for more than 15 m
 
 ### Containers 
 
-Lets say that we run code for the first time and it works. When we run it on another machine and it does not work. We move it to production and it does not work and it also does not work on the customer's machine. In most cases, the problem is because the code was being run on different machines. The customer machine, production machine and development machine are different. This is known as inconsistent environments. To solve this we will use containers
+Lets say that we run code for the first time and it works. When we run it on another machine, it does not work. We move it to production and it does not work and it also does not work on the customer's machine. In most cases, the problem is because the code was being run on different machines. The customer machine, production machine and development machine are different. This is known as inconsistent environments. To solve this we will use containers
 
 Isolated environments to run our code
 
@@ -792,7 +794,7 @@ The most famous is Docker
 
 Docker gives us a consistent runtime environment such that if I run a container on my machine, it will work the same on another machine 
 
-Docker works across platforms and it is highly efficient. Instead of running one service on an EC2 instance, we can have 10 containers running 10 different services making it more efficient 
+Docker works across platforms and it is highly efficient. Instead of running one service on an EC2 instance, we can have 10 containers in our instance, running 10 different services making it more efficient 
 
 Docker works in private data centers and cloud environments 
 
@@ -896,7 +898,7 @@ Application to application & application to person
 
 ### Overview of Kinesis 
 
-We all have an app which is a realtime app which is grabbing data and bringing data back. Example: Find a friend app which shows a friend's location on a map
+We all have used an app which is a realtime app which is grabbing data and bringing data back. Example: Find a friend app which shows a friend's location on a map
 
 Creating realtime processors on prem is expensive and hard
 
@@ -938,7 +940,7 @@ Get content to users in a faster way
 
 CloudFront is a content delivery network to securely deliver data, videos, apps, APIs globally at a high speed and low latency
 
-We running a website whose server in New York and aimed that this website will only be used by people in USA. However it gains popularity and people from Africa, Australia, Asia and Europe also visit our website. These people will have extremely slow connections, lot of latency and slow delivery of the data, as the server is not close to them
+We are running a website whose server in New York and aimed that this website will only be used by people in USA. However it gains popularity and people from Africa, Australia, Asia and Europe also visit our website. These people will have extremely slow connections, lot of latency and slow delivery of the data, as the server is not close to them
 
 To solve this problem, we can use caching servers. These are servers all over the world where we can put copies of our data and thus get rid of the high latency and slow connections. When a customer make a call to the content, the request goes to the server. The server checks if it has the required data. If it does not it makes a call to the original server in New York. The original server then sends the data to the caching server which will forward it to the user. At the same time, the caching server stores the contents in its cache. Anyone close to that caching server will get low latency. If another person also requests for that data, then the request is sent to the server which sees that it already has the required data and immediately delivers it
 
@@ -997,7 +999,7 @@ CloudFront is a content delivery system in AWS
 
 We are going to run our own database in an EC2 instance 
 
-Run an EC2 instance --> Download the software --> Load it on to the machine 
+Run an EC2 instance --> Download the software --> Run it on to the machine 
 
 Similar to what is used on prem
 
@@ -1051,7 +1053,7 @@ Cannot automatically scale in/out
 
 Most databases such as Oracle and MS SQL are databases which were built for on prem 
 
-Aurora is Amazon's relation database which is the built for the cloud
+Aurora is Amazon's relational database which is the built for the cloud
 
 Compatible with MySQL and PostgreSQL
 
@@ -1085,7 +1087,7 @@ By using NoSQL, we are trading complex data design to conserve space for cheap s
 
 Managed database
 
-Redshift is a data warehouse 
+Redshift is a data warehouse which will store data which is supposed to be stored for a long time
 
 We have structured and semi-structured data in an S3 bucket. Redshift will grab the data and bring it in. 
 
@@ -1105,7 +1107,7 @@ We can use different source and target databases such as shifting data from an e
 
 DMS CAN BE USED TO MIGRATE DATABASES TO/FROM THE CLOUD
 
-We can take the database from on prem to the cloud and when we cannot move the entire database to the cloud, if customers are constantly adding data, then DMS can continue to push data 
+Lets say we have a database on prem which we want to shift to the cloud using DMS. If people are constantly writing to that database, DMS will still continue to push data to the cloud
 
 ### Quiz
 
