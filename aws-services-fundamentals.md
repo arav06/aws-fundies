@@ -1027,6 +1027,8 @@ RDS LETS US RUN A DATABASE ON AN EC2 INSTANCE, WITHOUT US NEEDING TO CONFIGURE M
 
 We should create our database in more than 1 AZ
 
+Cannot automatically scale in/out
+
 #### Launching a MySQL database using RDS
 
 1. In the services, search for 'rds' and click on 'RDS'
@@ -1049,13 +1051,15 @@ We should create our database in more than 1 AZ
 
 Most databases such as Oracle and MS SQL are databases which were built for on prem 
 
-Aurora is Amazon's relational database which is the built for the cloud
+Aurora is Amazon's relation database which is the built for the cloud
 
 Compatible with MySQL and PostgreSQL
 
 Gives improved performance. Up to 3x higher throughput than stock PostgreSQL and up to 5x higher throughput than standard MySQL
 
 Aurora is used in enterprise apps, online/inventory catalogs and web and mobile gaming
+
+Can automatically scale in/out
 
 AURORA IS AN ENTERPRISE CLASS DATABASE 
 
