@@ -44,7 +44,7 @@ Aimed at when you are learning about AWS and experimenting and gaining knowledge
  
  Included in ALL AWS ACCOUNTS
  
- - 24/7 access to customer service - Email/Text support. Not gonna get a fast result. Used when asking questions which do not require an immediate results. The support provides documentations, whitepapers and a support forum. 
+ - 24/7 access to customer service - Email/Text support. Not gonna get a fast result. Used when asking questions which do not require an immediate result. The support provides documentations, whitepapers and a support forum. 
  - AWS Trusted Advisor - Provides recommendations that help you follow best practices in AWS. Checks for ways to improve your infrastructure, security, performance, reduce costs and monitor service limits. 7 checks only.
  - AWS Personal Health Dashboard: Shows you what is going on in your infrastructure at the moment. 
  - BASIC SUPPORT IS FREE
@@ -53,7 +53,7 @@ Aimed at when you are learning about AWS and experimenting and gaining knowledge
 
 Aimed at when a person is working on a project that is going to become a large and real world project. Used when you are testing your project. 
 
-- Response times: For general problem response time is less than 24 hours and for impaired problems it is less than 12 hours. Note: The response time is during business hours. When setting up your AWS account, you have to indicate your region. That regions sets your business hours. 
+- Response times: For general problems response time is less than 24 hours and for impaired problems it is less than 12 hours. Note: The response time is during business hours. When setting up your AWS account, you have to indicate your region. That regions sets your business hours. 
 - Cost: There are two options when it comes to developer support. You will pay the greater of the following 2 options
 	-  $29 per month 
 	-  3% of the bill
@@ -79,7 +79,7 @@ Aimed at a business which is ready to put a large project into AWS
 Aimed at large projects whose profit can be measured in seconds
 
 - Response time: If the business is down, response time is less than 15 minutes
-- Designated Technical Account Manager who will help when there is a problem in your organization and they can give you ideas
+- Designated Technical Account Manager who will help when there is a problem in your organization and he/she can give you ideas
 - Cost: There are 3 options when it comes to enterprise support. You will pay the greatest of the following 3 options
 	-  $15,000 per month 
 	-  10% of the bill, if the bill is less than $150K
@@ -195,7 +195,7 @@ THIS IS VERY IMPORTANT FOR A PROPOSAL.
 
 We have to first search and select the service we wish to use and then provide a brief description, region to run the server in, pricing model, etc.
 
-If we have to specify information such as 'Processed bytes' or 'Average number of connections', we can ask the IT team for this information
+We may have to specify information such as 'Processed bytes' or 'Average number of connections'. We can ask the IT team for this information
 
 Once all the information has been specified, we can scroll to the bottom and check the cost per month. We can now add this to our estimate. In our estimate, the total and annual and monthly cost and monthly cost per service are displayed
 
@@ -215,7 +215,7 @@ The number of checks is limited and is determined by the chosen support plan
 
 Higher level support will help in finding more and better ways to reduce costs
 
-It can be found by search for trusted advisor in AWS services
+It can be found by searching for trusted advisor in AWS services
 
 ### Top 3 ways to lower an AWS Bill
 
@@ -287,7 +287,7 @@ Service Selection Optimization
 
 ## Amazon CloudWatch & Amazon CloudTrail
 
-Used for logging in AWS
+Used for logging and monitoring in AWS
 
 * Amazon CloudWatch: Purpose, Main points
 * Amazon CloudTrail: Purpose
@@ -298,7 +298,7 @@ Used to watch or keep an eye on our AWS resources
 
 Lets you observe activity on an AWS resource
 
-Monitors various aspects of performance such as EC2 instance CPU and read or writes to an RDS DB 
+Monitors various aspects of performance such as EC2 instance CPU and read or writes to an RDS database
 
 It monitors every 5 minutes by default but it can be changed, but it may cost more
 
@@ -354,7 +354,7 @@ Following instructions to build infrastructure is full of potential errors
 
 To solve this problem, we need a way to declare our infrastructure. Instead of installing a web server, we have code which does it. It gives a declarative language and we say to build 'abcd', 'efgh' and 'ijkl'
 
-If we create an infrastructure using IaC in a development environment we can easily move the code to the test environment, we get the same infrastructure without configuring additional settings. It is exactly the same
+If we create an infrastructure using IaC in a development environment we can easily move the code to the test environment and we get the exact same infrastructure without configuring additional settings. 
 
 Once in production, most apps fail. IaC can fix this. There is a one to one relation. It offers reproducibility such that the state in dev environment is the same as the one in the test and production environments 
 
